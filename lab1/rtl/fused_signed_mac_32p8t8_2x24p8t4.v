@@ -34,33 +34,30 @@ module fused_signed_mac_32p8t8_2x24p8t4 (
     wire [15:0] out_8t8;
     wire [11:0] out_8t4_low, out_8t4_high;
     // generate the 8t4 lower product
-    assign out_8t4_low[3:0] = s_line[3:0];
-    adder_9bit  i_adder_24p8t4_low      (.a({1'b1, s_line3_l}), .b(), .out());
-    // 24b8t4 output 
-    wire [31:0] out_32p8t8;
-    wire [23:0] out_24p8t4_low, out_24p8t4_high;
-
+    assign out_8t4_low[2:0] = {s_line[2][0], s_line[1][0], s_line[0][0]};
+    adder_9bit_unit  i_adder_24p8t4_low     (.a({1'b1, s_line3_l}), .b(cout_line3_l), .out(out_8t4_low[11:3]));
     // generate the 8t4 higher product
+    assign out_8t4_high[2:0] = {s_line[6][0], s_line[5][0], s_line[4][0]};
+    adder_9bit_unit  i_adder_24p8t4_high    (.a({1'b1, s_line[7]}), .b(cout_line[7]), .out(out_8t4_high[11:3]));
+    // generate the 8t8 product
+    assign out_8t8[6:0] = {s_line[6][0], s_line[5][0], s_line[4][0], s_line[3][0], s_line[2][0], s_line[1][0], s_line[0][0]};
+    adder_9bit_unit  i_adder_32p8t8         (.a({1'b1, s_line[7]}), .b(cout_line[7]), .out(out_8t8[15:7]));
 
-    // generate the 24-bit lower output
 
-    // generate the 24-bit higher output
-
-    
-    wire [15:0] out_8t8;
-    wire [11:0] out_8t4_0, out_8t4_1;
-
-    assign out_8t8 = $signed(a) * $signed(b);
-    assign out_8t4_0 = $signed(a) * $signed(b[3:0]);
-    assign out_8t4_1 = $signed(a) * $signed(b[7:4]);
-
+    // MAC inputs
+    wire [31:0] product_32b;
+    wire [23:0] product_24b_low, product_24b_high;
     wire [31:0] out_32p8t8;
-    wire [23:0] out_24p8t4_0, out_24p8t4_1;
+    wire [23:0] out_24p8t4_low, out_24p8t4_1;
+    // align
+    assign product_24b_low[23:12] = out_8t4_low[11] ? 12'hfff : 12'h000;
+    assign product_24b_high[23:12] = out_8t4_high[11] ? 12'hfff : 12'h000;
+    assign product_32b[31:16] = out_8t8[15] ? 16'hffff : 16'h0000;
+    // generate the MAC result
+    adder_24bit i_adder_24b_low     (.a(product_24b_low), .b(in[23:0]), .out(out_24p8t4_low));
+    adder_24bit i_adder_24b_high    (.a(product_24b_high), .b(in[47:24]), .out(out_24p8t4_high));
+    adder_32bit i_adder_32b         (.a(product_32b), .b(in[31:0]), .out(out_32p8t8));
 
-    assign out_32p8t8 = $signed(in[31:0]) + $signed(out_8t8);
-    assign out_24p8t4_0 = $signed(in[23:0]) + $signed(out_8t4_0);
-    assign out_24p8t4_1 = $signed(in[47:24]) + $signed(out_8t4_1);
-
-    assign out = split ? {out_24p8t4_1, out_24p8t4_0} : {{16{out_32p8t8[31]}}, out_32p8t8};
+    assign out = split ? {out_24p8t4_high, out_24p8t4_low} : {{16{out_32p8t8[31]}}, out_32p8t8};
 
 endmodule

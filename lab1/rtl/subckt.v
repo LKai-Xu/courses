@@ -164,7 +164,7 @@ module basic_unit_last_line(
 endmodule
 
 
-module adder_9bit(
+module adder_9bit_unit(
     input   [8:0] a,
     input   [8:1] b,
     output  [8:0] out
@@ -182,6 +182,52 @@ module adder_9bit(
     endgenerate
 
     assign out[8:0] = s[8:0];
+
+
+endmodule
+
+
+module adder_24bit(
+    input   [23:0] a,
+    input   [23:0] b,
+    output  [23:0] out
+);
+
+    wire [23:0] s;
+    wire [23:0] cout;
+
+    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    generate 
+        genvar i_adder;
+        for(i_adder=1; i_adder<24; i_adder=i_adder+1) begin: adder_for_bits
+            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
+        end
+    endgenerate
+
+    assign out[23:0] = s[23:0];
+
+
+endmodule
+
+
+module adder_32bit(
+    input   [31:0] a,
+    input   [31:0] b,
+    output  [31:0] out
+);
+
+    wire [31:0] s;
+    wire [31:0] cout;
+
+    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    generate 
+        genvar i_adder;
+        for(i_adder=1; i_adder<32; i_adder=i_adder+1) begin: adder_for_bits
+            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
+        end
+    endgenerate
+
+    assign out[31:0] = s[31:0];
 
 
 endmodule
