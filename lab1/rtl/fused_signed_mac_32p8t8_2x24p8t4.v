@@ -43,7 +43,8 @@ module fused_signed_mac_32p8t8_2x24p8t4 (
     adder_9bit_unit  i_adder_24p8t4_high    (.a({1'b1, s_line[7]}), .b(cout_line[7]), .out(out_8t4_high[11:3]));
     // generate the 8t8 product
     assign out_8t8[6:0] = {s_line[6][0], s_line[5][0], s_line[4][0], s_line[3][0], s_line[2][0], s_line[1][0], s_line[0][0]};
-    adder_9bit_unit  i_adder_32p8t8         (.a({1'b1, s_line[7]}), .b(cout_line[7]), .out(out_8t8[15:7]));
+    assign out_8t8[15:7] = out_8t4_high[11:3];
+    // adder_9bit_unit  i_adder_32p8t8         (.a({1'b1, s_line[7]}), .b(cout_line[7]), .out(out_8t8[15:7]));
 
 
     // MAC inputs
