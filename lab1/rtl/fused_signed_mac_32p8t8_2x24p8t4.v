@@ -25,7 +25,7 @@ module fused_signed_mac_32p8t8_2x24p8t4 (
     basic_unit_last_line    i_bul_3l    (.in_x({1'b0, s_line[2][7:1]}), .in_a(a), in_b(b[3]), .cin(cout_line[2]), .s(s_line3_l), .cout(cout_line3_l));
     // array split high
     basic_unit_line         i_bul_4     (.in_x({1'b0, s_line4_in[7:1]}), .in_a(a), in_b(b[4]), .cin(cout_line4_in), .s(s_line[4]), .cout(cout_line[4]));
-    basic_unit_line         i_bul_5     (.in_x({1'b0, s_line[4][7:1]}), .in_a(a), in_b(b[5]), .cin(cout_line[4]), .s(s_line[5]), .cout(cout_line[5]));
+    basic_unit_line         i_bul_5     (.in_x({split, s_line[4][7:1]}), .in_a(a), in_b(b[5]), .cin(cout_line[4]), .s(s_line[5]), .cout(cout_line[5]));
     basic_unit_line         i_bul_6     (.in_x({1'b0, s_line[5][7:1]}), .in_a(a), in_b(b[6]), .cin(cout_line[5]), .s(s_line[6]), .cout(cout_line[6]));
     basic_unit_last_line    i_bul_7     (.in_x({1'b0, s_line[6][7:1]}), .in_a(a), in_b(b[7]), .cin(cout_line[6]), .s(s_line[7]), .cout(cout_line[7]));
 
