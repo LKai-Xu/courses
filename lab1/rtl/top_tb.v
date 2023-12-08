@@ -1,9 +1,9 @@
 module top_tb();
 
-    wire split;
-    wire [47:0] inputs;
-    wire [7:0] a;
-    wire [7:0] b;
+    reg split;
+    reg [47:0] inputs;
+    reg [7:0] a;
+    reg [7:0] b;
     wire [47:0] outputs;
 
     initial begin
@@ -14,6 +14,28 @@ module top_tb();
         # 10;
         a <= 8'hff;
         b <= 8'hff;
+        inputs <= 48'h12346789;
+        # 10;
+        a <= 8'h37;
+        b <= 8'ha4;
+//        # 10;
+//        a <= 8'hff;
+//        b <= 8'h24;
+//        # 10;
+//        a <= 8'hff;
+//        b <= 8'h78;
+        # 10;
+        split <= 1'b0;
+        a <= 8'h56;
+        b <= 8'h79;
+        # 10;
+        a <= 8'h56;
+        b <= 8'h89;
+        # 10;
+        a <= 8'h88;
+        b <= 8'h89;
+        inputs <= 48'h6789abcd;
+        
 
     end
 
