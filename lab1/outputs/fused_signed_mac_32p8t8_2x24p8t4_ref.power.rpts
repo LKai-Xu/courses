@@ -2,9 +2,9 @@
 ****************************************
 Report : power
         -analysis_effort low
-Design : fused_signed_mac_32p8t8_2x24p8t4
+Design : fused_signed_mac_32p8t8_2x24p8t4_ref
 Version: O-2018.06-SP1
-Date   : Fri Dec  8 15:55:12 2023
+Date   : Fri Dec  8 17:32:54 2023
 ****************************************
 
 
@@ -18,7 +18,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-fused_signed_mac_32p8t8_2x24p8t4
+fused_signed_mac_32p8t8_2x24p8t4_ref
                        8000              saed32rvt_ss0p95v125c
 
 
@@ -31,12 +31,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  =  20.7455 uW   (70%)
-  Net Switching Power  =   9.0772 uW   (30%)
+  Cell Internal Power  =  24.0756 uW   (72%)
+  Net Switching Power  =   9.1402 uW   (28%)
                          ---------
-Total Dynamic Power    =  29.8227 uW  (100%)
+Total Dynamic Power    =  33.2158 uW  (100%)
 
-Cell Leakage Power     =  60.1182 uW
+Cell Leakage Power     =  65.7987 uW
 
 Information: report_power power group summary does not include estimated clock tree power. (PWR-789)
 
@@ -49,7 +49,7 @@ black_box          0.0000            0.0000            0.0000            0.0000 
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
 register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational     20.7455            9.0772        6.0118e+07           89.9408  ( 100.00%)
+combinational     24.0755            9.1402        6.5799e+07           99.0145  ( 100.00%)
 --------------------------------------------------------------------------------------------------
-Total             20.7455 uW         9.0772 uW     6.0118e+07 pW        89.9408 uW
+Total             24.0755 uW         9.1402 uW     6.5799e+07 pW        99.0145 uW
 1

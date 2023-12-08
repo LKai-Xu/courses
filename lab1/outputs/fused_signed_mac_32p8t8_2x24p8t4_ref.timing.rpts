@@ -1,0 +1,84 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : fused_signed_mac_32p8t8_2x24p8t4_ref
+Version: O-2018.06-SP1
+Date   : Fri Dec  8 17:32:54 2023
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: b[1] (input port clocked by vclk)
+  Endpoint: out[31] (output port clocked by vclk)
+  Path Group: vclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fused_signed_mac_32p8t8_2x24p8t4_ref
+                     8000                  saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock vclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.00       0.00 f
+  b[1] (in)                                0.00       0.00 f
+  U94/Y (AND2X1_RVT)                       0.06       0.06 f
+  U95/Y (NAND2X0_RVT)                      0.05       0.11 r
+  U238/Y (OA21X1_RVT)                      0.08       0.18 r
+  intadd_10/U4/S (FADDX1_RVT)              0.14       0.32 f
+  U77/Y (INVX0_RVT)                        0.04       0.36 r
+  U90/S (FADDX1_RVT)                       0.14       0.49 f
+  U91/Y (INVX0_RVT)                        0.04       0.53 r
+  intadd_12/U2/CO (FADDX1_RVT)             0.11       0.64 r
+  U79/Y (AO222X1_RVT)                      0.15       0.79 r
+  intadd_10/U2/CO (FADDX1_RVT)             0.11       0.90 r
+  U70/Y (AO222X1_RVT)                      0.13       1.04 r
+  intadd_5/U2/CO (FADDX1_RVT)              0.12       1.15 r
+  U68/Y (AO222X1_RVT)                      0.16       1.31 r
+  U69/Y (AO222X1_RVT)                      0.13       1.45 r
+  intadd_1/U2/CO (FADDX1_RVT)              0.12       1.56 r
+  U353/Y (AO222X1_RVT)                     0.15       1.71 r
+  U364/Y (INVX0_RVT)                       0.03       1.75 f
+  U365/Y (OAI222X1_RVT)                    0.14       1.89 r
+  U376/Y (AO222X1_RVT)                     0.15       2.04 r
+  U381/Y (AO222X1_RVT)                     0.13       2.17 r
+  U386/Y (AO22X1_RVT)                      0.07       2.24 r
+  U392/Y (AO22X1_RVT)                      0.07       2.31 r
+  U398/Y (AO22X1_RVT)                      0.07       2.37 r
+  U404/Y (AO22X1_RVT)                      0.07       2.44 r
+  U410/Y (AO22X1_RVT)                      0.07       2.51 r
+  U416/Y (AO22X1_RVT)                      0.07       2.58 r
+  U420/Y (NAND2X0_RVT)                     0.07       2.65 f
+  U427/Y (AND3X1_RVT)                      0.10       2.74 f
+  U428/Y (OA22X1_RVT)                      0.08       2.83 f
+  U434/Y (OA21X1_RVT)                      0.08       2.90 f
+  U441/Y (OA221X1_RVT)                     0.11       3.02 f
+  U446/Y (OA21X1_RVT)                      0.09       3.10 f
+  U451/Y (OA221X1_RVT)                     0.11       3.21 f
+  U455/Y (OA21X1_RVT)                      0.08       3.29 f
+  U459/Y (OA21X1_RVT)                      0.08       3.37 f
+  U462/Y (AO222X1_RVT)                     0.07       3.44 f
+  U58/S (FADDX1_RVT)                       0.14       3.58 r
+  U57/Y (AND2X2_RVT)                       0.09       3.67 r
+  U463/Y (AO21X1_RVT)                      0.05       3.72 r
+  out[31] (out)                            0.00       3.72 r
+  data arrival time                                   3.72
+
+  clock vclk (rise edge)                  10.00      10.00
+  clock network delay (ideal)              0.00      10.00
+  output external delay                    0.00      10.00
+  data required time                                 10.00
+  -----------------------------------------------------------
+  data required time                                 10.00
+  data arrival time                                  -3.72
+  -----------------------------------------------------------
+  slack (MET)                                         6.28
+
+
+1

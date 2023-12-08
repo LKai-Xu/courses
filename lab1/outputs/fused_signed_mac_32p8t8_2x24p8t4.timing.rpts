@@ -6,7 +6,7 @@ Report : timing
         -max_paths 1
 Design : fused_signed_mac_32p8t8_2x24p8t4
 Version: O-2018.06-SP1
-Date   : Fri Dec  8 15:44:26 2023
+Date   : Fri Dec  8 15:55:12 2023
 ****************************************
 
 Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
@@ -28,48 +28,46 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.00       0.00 r
   b[0] (in)                                0.00       0.00 r
-  U444/Y (NAND3X0_RVT)                     0.06       0.06 f
-  U520/Y (OAI221X1_RVT)                    0.12       0.18 r
-  U521/Y (NAND3X0_RVT)                     0.06       0.24 f
-  U522/Y (OA221X1_RVT)                     0.09       0.33 f
-  U538/S (FADDX1_RVT)                      0.16       0.50 r
-  U551/S (FADDX1_RVT)                      0.16       0.66 f
-  U524/Y (NAND2X0_RVT)                     0.07       0.73 r
-  intadd_5/U5/S (FADDX1_RVT)               0.16       0.89 f
-  intadd_6/U4/S (FADDX1_RVT)               0.16       1.05 r
+  U412/Y (NAND3X0_RVT)                     0.06       0.06 f
+  U579/Y (OAI221X1_RVT)                    0.12       0.18 r
+  U580/Y (NAND3X0_RVT)                     0.06       0.24 f
+  U581/Y (OA221X1_RVT)                     0.09       0.33 f
+  U597/S (FADDX1_RVT)                      0.16       0.50 r
+  U610/S (FADDX1_RVT)                      0.16       0.66 f
+  U583/Y (NAND2X0_RVT)                     0.07       0.73 r
+  intadd_3/U5/S (FADDX1_RVT)               0.16       0.89 f
+  intadd_4/U4/S (FADDX1_RVT)               0.16       1.05 r
   intadd_0/U8/S (FADDX1_RVT)               0.16       1.21 f
   intadd_7/U2/S (FADDX1_RVT)               0.18       1.38 r
-  U391/Y (AO222X1_RVT)                     0.17       1.55 r
-  U392/Y (AO222X1_RVT)                     0.16       1.71 r
-  U393/Y (AO222X1_RVT)                     0.16       1.87 r
-  U394/Y (AO222X1_RVT)                     0.14       2.01 r
-  U395/Y (AO222X1_RVT)                     0.13       2.14 r
-  U396/Y (INVX0_RVT)                       0.04       2.18 f
-  U398/Y (AO222X1_RVT)                     0.12       2.30 f
-  U401/Y (AO222X1_RVT)                     0.10       2.40 f
-  U402/Y (INVX0_RVT)                       0.04       2.44 r
-  U405/Y (OA222X1_RVT)                     0.11       2.55 r
-  U406/Y (OR2X1_RVT)                       0.06       2.61 r
-  U407/Y (NAND2X0_RVT)                     0.04       2.65 f
-  U409/Y (NAND2X0_RVT)                     0.07       2.72 r
-  U412/Y (AO21X1_RVT)                      0.10       2.82 r
-  U414/Y (AO21X1_RVT)                      0.09       2.92 r
-  U416/Y (AO21X1_RVT)                      0.09       3.01 r
-  U418/Y (AO21X1_RVT)                      0.09       3.10 r
-  U420/Y (AO21X1_RVT)                      0.09       3.20 r
-  U422/Y (AO21X1_RVT)                      0.09       3.29 r
-  U424/Y (AO21X1_RVT)                      0.09       3.39 r
-  U426/Y (AO21X1_RVT)                      0.09       3.48 r
-  U428/Y (AO21X1_RVT)                      0.09       3.57 r
-  U430/Y (AO21X1_RVT)                      0.09       3.66 r
-  U432/Y (AO21X1_RVT)                      0.09       3.75 r
-  U434/Y (AO21X1_RVT)                      0.09       3.84 r
-  U436/Y (AO21X1_RVT)                      0.09       3.92 r
-  U438/Y (AO21X1_RVT)                      0.09       4.01 r
-  U439/Y (AO222X1_RVT)                     0.14       4.15 r
-  U440/Y (MUX41X1_RVT)                     0.14       4.29 r
-  U441/Y (INVX0_RVT)                       0.09       4.38 f
-  U442/Y (OAI21X1_RVT)                     0.12       4.50 r
+  U460/Y (AO222X1_RVT)                     0.17       1.55 r
+  U461/Y (AO222X1_RVT)                     0.16       1.71 r
+  U462/Y (AO222X1_RVT)                     0.16       1.87 r
+  U463/Y (AO222X1_RVT)                     0.14       2.01 r
+  U464/Y (AO222X1_RVT)                     0.14       2.14 r
+  U465/Y (AO222X1_RVT)                     0.14       2.28 r
+  U466/Y (AO222X1_RVT)                     0.14       2.42 r
+  U467/Y (AO222X1_RVT)                     0.13       2.54 r
+  U468/Y (OR2X1_RVT)                       0.06       2.60 r
+  U469/Y (NAND2X0_RVT)                     0.04       2.65 f
+  U471/Y (NAND2X0_RVT)                     0.07       2.72 r
+  U474/Y (AO21X1_RVT)                      0.10       2.82 r
+  U476/Y (AO21X1_RVT)                      0.09       2.91 r
+  U478/Y (AO21X1_RVT)                      0.09       3.01 r
+  U480/Y (AO21X1_RVT)                      0.09       3.10 r
+  U482/Y (AO21X1_RVT)                      0.09       3.19 r
+  U484/Y (AO21X1_RVT)                      0.09       3.28 r
+  U486/Y (AO21X1_RVT)                      0.09       3.38 r
+  U488/Y (AO21X1_RVT)                      0.09       3.47 r
+  U490/Y (AO21X1_RVT)                      0.09       3.56 r
+  U492/Y (AO21X1_RVT)                      0.09       3.65 r
+  U494/Y (AO21X1_RVT)                      0.09       3.74 r
+  U496/Y (AO21X1_RVT)                      0.09       3.83 r
+  U498/Y (AO21X1_RVT)                      0.10       3.92 r
+  U500/Y (AO21X1_RVT)                      0.09       4.01 r
+  U501/Y (AO222X1_RVT)                     0.14       4.15 r
+  U502/Y (MUX41X1_RVT)                     0.14       4.29 r
+  U503/Y (INVX0_RVT)                       0.09       4.38 f
+  U504/Y (OAI21X1_RVT)                     0.12       4.50 r
   out[32] (out)                            0.00       4.50 r
   data arrival time                                   4.50
 

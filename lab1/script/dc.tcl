@@ -1,4 +1,4 @@
-set top "fused_signed_mac_32p8t8_2x24p8t4"
+set top "fused_signed_mac_32p8t8_2x24p8t4_ref"
 
 set search_path 	"../lib"
 set target_library	"saed32rvt_ss0p95v125c.db sram_8kx32_ss_0p99v_0p99v_125c.db"
