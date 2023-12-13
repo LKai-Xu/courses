@@ -1,11 +1,11 @@
 module top_tb();
 
-    reg clk,
-    reg rst_n,
-    reg start,
-    reg [15:0] angle,
-    wire [15:0] cos,
-    wire [15:0] sin
+    reg clk;
+    reg rst_n;
+    reg start;
+    reg [15:0] angle;
+    wire [15:0] cos;
+    wire [15:0] sin;
 
     // clk
     initial begin
@@ -16,18 +16,18 @@ module top_tb();
     end
 
     initial begin
-        rst_n = 1'b1;
-        #5 rst_n = 1'b0;
+        rst_n = 1'b0;
+        #5 rst_n = 1'b1;
     end
 
     initial begin
         start = 1'b0;
-        #15 start = 1'b1;
+        #16 start = 1'b1;
         #10 start = 1'b0;
     end
 
     initial begin
-        angle = 16'h8000;
+        angle = 16'b0110010010000111;
     end
 
 

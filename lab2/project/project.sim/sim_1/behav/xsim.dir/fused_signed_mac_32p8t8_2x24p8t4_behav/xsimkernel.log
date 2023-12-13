@@ -1,0 +1,4 @@
+Running: xsim.dir/fused_signed_mac_32p8t8_2x24p8t4_behav/xsimk.exe -simmode gui -wdb fused_signed_mac_32p8t8_2x24p8t4_behav.wdb -simrunnum 0 -socket 62484
+Design successfully loaded
+Design Loading Memory Usage: 9136 KB (Peak: 9136 KB)
+Design Loading CPU Usage: 30 ms
