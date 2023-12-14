@@ -27,7 +27,8 @@ module top_tb();
     end
 
     initial begin
-        angle = 16'b0110010010000111;
+        // angle = 16'b0110010010000111;
+        angle = 16'b0100001100000101;
     end
 
 
