@@ -106,6 +106,7 @@ module multiply_and_add(
 
     adder_16bit i_adder_16b_0 (.a({1'b0, s_line[15]}), .b(cout_line[15]), .out(product_32b[31:16]));
 
+    // neg=1, minus; neg=0, plus
     wire [15:0] pos_or_neg;
     assign pos_or_neg = neg ? {{~{product_32b[31:16]}+1}} : {product_32b[31:16]};
 

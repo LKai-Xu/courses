@@ -136,10 +136,11 @@ module cordic (
     wire [15:0] new_sin;
     wire [15:0] new_cos;
     wire neg;
+    // if <=, neg=0, add in sin (0) and subtract in cos (1); else, neg=1, subtract in sin and add in cos
     assign neg = (inner_angle <= sampled_angle) ? 0 : 1;
 
-    multiply_and_add i_mac_cos (.in(cos), .a(tanei), .b(sin), .neg(neg), .out(new_cos));
-    multiply_and_add i_mac_sin (.in(sin), .a(tanei), .b(cos), .neg(~neg), .out(new_sin));
+    multiply_and_add i_mac_cos (.in(cos), .a(tanei), .b(sin), .neg(~neg), .out(new_cos));
+    multiply_and_add i_mac_sin (.in(sin), .a(tanei), .b(cos), .neg(neg), .out(new_sin));
 
 
 endmodule
