@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP1 for linux64 -- Jul 19, 2018
-#@ # Date:   Sun Dec 17 13:00:52 2023
+#@ # Date:   Sun Dec 17 13:40:06 2023
 #@ # Run by: xuliukai@s207-3
 #@ 
 
@@ -6624,10 +6624,11 @@ source /home/synopsys/dc/syn/O-2018.06-SP1/admin/setup/.synopsys_dc.setup
 
 #@ # -- End source /home/synopsys/dc/syn/O-2018.06-SP1/admin/setup/.synopsys_dc.setup
 
+source ../script/cd
 source ../script/dc.tcl
 #@ # -- Starting source ../script/dc.tcl
 
-#@ set top "cordic"
+#@ set top "multiply_and_add_unit"
 #@ 
 #@ set search_path 	"../lib"
 #@ set target_library	"saed32rvt_ss0p95v125c.db sram_8kx32_ss_0p99v_0p99v_125c.db"
@@ -6636,6 +6637,10 @@ source ../script/dc.tcl
 #@ set_svf -off
 #@ 
 #@ analyze -format sverilog -vcs [glob -nocomplain -directory ../rtl/ *.v]
+#@ set rtl_dir "../rtl"
+#@ analyze -format verilog $rtl_dir/cordic.v
+#@ analyze -format verilog $rtl_dir/subckt.v
+#@ analyze -format verilog $rtl_dir/mac.v
 #@ elaborate $top
 #@ current_design $top
 #@ check_design

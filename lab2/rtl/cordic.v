@@ -139,8 +139,8 @@ module cordic (
     // angle addition or subtract
     add_or_sub_unit i_aoru (.neg(neg), .ei_radian(ei_radian), .inner_angle(inner_angle), .new_inner_angle(new_inner_angle));
 
-    multiply_and_add i_mac_cos (.in(cos), .a(tanei), .b(sin), .neg(~neg), .out(new_cos));
-    multiply_and_add i_mac_sin (.in(sin), .a(tanei), .b(cos), .neg(neg), .out(new_sin));
+    multiply_and_add_unit i_mac_cos (.in(cos), .a(tanei), .b(sin), .neg(~neg), .out(new_cos));
+    multiply_and_add_unit i_mac_sin (.in(sin), .a(tanei), .b(cos), .neg(neg), .out(new_sin));
 
 
 endmodule

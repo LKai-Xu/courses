@@ -1,0 +1,44 @@
+ 
+****************************************
+Report : area
+Design : multiply_and_add_unit
+Version: O-2018.06-SP1
+Date   : Sun Dec 17 13:40:30 2023
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    saed32rvt_ss0p95v125c (File: /home/xuliukai/class/courses/lab2/lib/saed32rvt_ss0p95v125c.db)
+
+Number of ports:                           65
+Number of nets:                           865
+Number of cells:                          595
+Number of combinational cells:            595
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                         22
+Number of references:                      18
+
+Combinational area:               1850.930734
+Buf/Inv area:                       27.955840
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:             374.621508
+
+Total cell area:                  1850.930734
+Total area:                       2225.552242
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  ---------
+multiply_and_add_unit             1850.9307    100.0  1850.9307     0.0000  0.0000  multiply_and_add_unit
+--------------------------------  ---------  -------  ---------  ---------  ------  ---------
+Total                                                 1850.9307     0.0000  0.0000
+
+1
