@@ -1,23 +1,23 @@
-module adder_16bit(
-    input   [15:0] a,
-    input   [15:0] b,
-    output  [15:0] out
-);
+// module adder_16bit(
+//     input   [15:0] a,
+//     input   [15:0] b,
+//     output  [15:0] out
+// );
 
-    wire [15:0] s;
-    wire [15:0] cout;
+//     wire [15:0] s;
+//     wire [15:0] cout;
 
-    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
-    generate 
-        genvar i_adder;
-        for(i_adder=1; i_adder<16; i_adder=i_adder+1) begin: adder_for_bits
-            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
-        end
-    endgenerate
+//     ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+//     generate 
+//         genvar i_adder;
+//         for(i_adder=1; i_adder<16; i_adder=i_adder+1) begin: adder_for_bits
+//             fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
+//         end
+//     endgenerate
 
-    assign out[15:0] = s[15:0];
+//     assign out[15:0] = s[15:0];
 
-endmodule
+// endmodule
 
 
 

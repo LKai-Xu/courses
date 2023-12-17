@@ -11,14 +11,15 @@ WARNING: [XSIM 43-4100] "D:/code/courses/lab2/project/project.sim/sim_1/behav/gl
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.lut
+Compiling module xil_defaultlib.ha
+Compiling module xil_defaultlib.fa
+Compiling module xil_defaultlib.adder_16bit_default
+Compiling module xil_defaultlib.add_or_sub_unit
 Compiling module xil_defaultlib.unsigned_unit_first_line
 Compiling module xil_defaultlib.basic_unit_ha_and
 Compiling module xil_defaultlib.unsigned_unit_second_line_defaul...
 Compiling module xil_defaultlib.basic_unit_fa_and
 Compiling module xil_defaultlib.unsigned_unit_line_default
-Compiling module xil_defaultlib.ha
-Compiling module xil_defaultlib.fa
-Compiling module xil_defaultlib.adder_16bit_default
 Compiling module xil_defaultlib.multiply_and_add_default
 Compiling module xil_defaultlib.cordic
 Compiling module xil_defaultlib.top_tb

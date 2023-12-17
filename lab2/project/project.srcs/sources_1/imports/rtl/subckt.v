@@ -184,6 +184,28 @@ module adder_9bit_unit(
 
     assign out[8:0] = s[8:0];
 
+endmodule
+
+
+module adder_16bit(
+    input   [15:0] a,
+    input   [15:0] b,
+    output  [15:0] out
+);
+
+    wire [15:0] s;
+    wire [15:0] cout;
+
+    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    generate 
+        genvar i_adder;
+        for(i_adder=1; i_adder<16; i_adder=i_adder+1) begin: adder_for_bits
+            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
+        end
+    endgenerate
+
+    assign out[15:0] = s[15:0];
+
 
 endmodule
 
@@ -316,5 +338,21 @@ module lut(
 
     assign ei_radian = ei_radian_const[index];
     assign tanei = tanei_const[index];
+
+endmodule
+
+
+
+module add_or_sub_unit(
+    input neg,
+    input [15:0] ei_radian,
+    input [15:0] inner_angle,
+    output [15:0] new_inner_angle
+);
+
+    wire [15:0] signed_ei_radian;
+    assign signed_ei_radian = neg ? {{~{ei_radian}+1}} : ei_radian;
+
+    adder_16bit i_adder_16b_0 (.a(signed_ei_radian), .b(inner_angle), .out(new_inner_angle));
 
 endmodule
