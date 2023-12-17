@@ -4,7 +4,7 @@ Report : power
         -analysis_effort low
 Design : multiply_and_add_unit
 Version: O-2018.06-SP1
-Date   : Sun Dec 17 13:40:30 2023
+Date   : Sun Dec 17 13:58:30 2023
 ****************************************
 
 
@@ -30,12 +30,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  = 512.7484 uW   (77%)
-  Net Switching Power  = 155.9795 uW   (23%)
+  Cell Internal Power  = 498.5314 uW   (77%)
+  Net Switching Power  = 151.0754 uW   (23%)
                          ---------
-Total Dynamic Power    = 668.7278 uW  (100%)
+Total Dynamic Power    = 649.6068 uW  (100%)
 
-Cell Leakage Power     =  90.4039 uW
+Cell Leakage Power     =  89.0639 uW
 
 Information: report_power power group summary does not include estimated clock tree power. (PWR-789)
 
@@ -48,7 +48,7 @@ black_box          0.0000            0.0000            0.0000            0.0000 
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
 register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational    512.7484          155.9794        9.0404e+07          759.1321  ( 100.00%)
+combinational    498.5313          151.0753        8.9064e+07          738.6706  ( 100.00%)
 --------------------------------------------------------------------------------------------------
-Total            512.7484 uW       155.9794 uW     9.0404e+07 pW       759.1321 uW
+Total            498.5313 uW       151.0753 uW     8.9064e+07 pW       738.6706 uW
 1

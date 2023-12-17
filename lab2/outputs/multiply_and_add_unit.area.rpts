@@ -3,7 +3,7 @@
 Report : area
 Design : multiply_and_add_unit
 Version: O-2018.06-SP1
-Date   : Sun Dec 17 13:40:30 2023
+Date   : Sun Dec 17 13:58:30 2023
 ****************************************
 
 Information: Updating design information... (UID-85)
@@ -12,22 +12,22 @@ Library(s) Used:
     saed32rvt_ss0p95v125c (File: /home/xuliukai/class/courses/lab2/lib/saed32rvt_ss0p95v125c.db)
 
 Number of ports:                           65
-Number of nets:                           865
-Number of cells:                          595
-Number of combinational cells:            595
-Number of sequential cells:                 0
+Number of nets:                           857
+Number of cells:                          587
+Number of combinational cells:            586
+Number of sequential cells:                 1
 Number of macros/black boxes:               0
-Number of buf/inv:                         22
-Number of references:                      18
+Number of buf/inv:                         18
+Number of references:                      17
 
-Combinational area:               1850.930734
-Buf/Inv area:                       27.955840
+Combinational area:               1830.090926
+Buf/Inv area:                       22.872960
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
-Net Interconnect area:             374.621508
+Net Interconnect area:             372.663582
 
-Total cell area:                  1850.930734
-Total area:                       2225.552242
+Total cell area:                  1830.090926
+Total area:                       2202.754509
 
 Hierarchical area distribution
 ------------------------------
@@ -37,8 +37,8 @@ Hierarchical area distribution
 Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
                                   Total      Total    national   national   boxes   Design
 --------------------------------  ---------  -------  ---------  ---------  ------  ---------
-multiply_and_add_unit             1850.9307    100.0  1850.9307     0.0000  0.0000  multiply_and_add_unit
+multiply_and_add_unit             1830.0909    100.0  1830.0909     0.0000  0.0000  multiply_and_add_unit
 --------------------------------  ---------  -------  ---------  ---------  ------  ---------
-Total                                                 1850.9307     0.0000  0.0000
+Total                                                 1830.0909     0.0000  0.0000
 
 1

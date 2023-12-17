@@ -1,4 +1,3 @@
-Warning: Design 'cordic' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 Report : timing
@@ -7,15 +6,16 @@ Report : timing
         -max_paths 1
 Design : cordic
 Version: O-2018.06-SP1
-Date   : Sun Dec 17 13:29:15 2023
+Date   : Sun Dec 17 14:50:25 2023
 ****************************************
 
 Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
 Wire Load Model Mode: enclosed
 
-  Startpoint: working_reg
+  Startpoint: inner_angle_reg[0]
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: cos_reg[1] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: inner_angle_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -23,28 +23,58 @@ Wire Load Model Mode: enclosed
   ------------------------------------------------
   cordic             8000                  saed32rvt_ss0p95v125c
 
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  working_reg/CLK (DFFARX1_RVT)            0.00       0.00 r
-  working_reg/Q (DFFARX1_RVT)              0.20       0.20 r
-  U172/Y (NOR2X4_RVT)                      0.15       0.35 f
-  U174/Y (INVX0_RVT)                       0.11       0.46 r
-  U21/Y (AO22X1_RVT)                       0.10       0.57 r
-  cos_reg[1]/D (DFFARX1_RVT)               0.00       0.57 r
-  data arrival time                                   0.57
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  inner_angle_reg[0]/CLK (DFFARX1_RVT)                    0.00       0.00 r
+  inner_angle_reg[0]/Q (DFFARX1_RVT)                      0.17       0.17 f
+  U1568/Y (NAND2X0_RVT)                                   0.05       0.22 r
+  U1569/Y (AO222X1_RVT)                                   0.12       0.34 r
+  U1570/Y (AO222X1_RVT)                                   0.14       0.48 r
+  U1571/Y (AO222X1_RVT)                                   0.12       0.60 r
+  U1572/Y (AO222X1_RVT)                                   0.14       0.75 r
+  U1573/Y (AO222X1_RVT)                                   0.14       0.89 r
+  U1574/Y (AO222X1_RVT)                                   0.12       1.01 r
+  U1575/Y (AO222X1_RVT)                                   0.12       1.13 r
+  U1576/Y (AO21X1_RVT)                                    0.05       1.18 r
+  U1577/Y (AO22X1_RVT)                                    0.09       1.27 r
+  U1578/Y (AO222X1_RVT)                                   0.14       1.40 r
+  U1579/Y (AO222X1_RVT)                                   0.12       1.52 r
+  U1581/Y (AO221X1_RVT)                                   0.09       1.61 r
+  U1582/Y (NAND3X0_RVT)                                   0.09       1.70 f
+  U1583/Y (INVX0_RVT)                                     0.13       1.83 r
+  U1584/Y (INVX0_RVT)                                     0.14       1.97 f
+  U1624/Y (NAND2X0_RVT)                                   0.08       2.05 r
+  U1627/Y (MUX21X1_RVT)                                   0.11       2.16 r
+  U1633/Y (AO222X1_RVT)                                   0.16       2.32 r
+  U1640/Y (AO222X1_RVT)                                   0.15       2.47 r
+  intadd_3/U4/CO (FADDX1_RVT)                             0.11       2.58 r
+  intadd_3/U3/CO (FADDX1_RVT)                             0.10       2.68 r
+  intadd_3/U2/CO (FADDX1_RVT)                             0.11       2.79 r
+  U1602/Y (AO222X1_RVT)                                   0.15       2.94 r
+  U1677/CO (FADDX1_RVT)                                   0.12       3.05 r
+  U1610/Y (AO222X1_RVT)                                   0.16       3.21 r
+  U1615/Y (AO222X1_RVT)                                   0.15       3.36 r
+  intadd_2/U6/CO (FADDX1_RVT)                             0.11       3.47 r
+  intadd_2/U5/CO (FADDX1_RVT)                             0.10       3.57 r
+  intadd_2/U4/CO (FADDX1_RVT)                             0.10       3.67 r
+  intadd_2/U3/CO (FADDX1_RVT)                             0.09       3.76 r
+  U1691/Y (XOR2X1_RVT)                                    0.11       3.87 f
+  U1692/Y (AND2X1_RVT)                                    0.05       3.92 f
+  inner_angle_reg[15]/D (DFFARX1_RVT)                     0.00       3.92 f
+  data arrival time                                                  3.92
 
-  clock clk (rise edge)                   10.00      10.00
-  clock network delay (ideal)              0.00      10.00
-  cos_reg[1]/CLK (DFFARX1_RVT)             0.00      10.00 r
-  library setup time                      -0.06       9.94
-  data required time                                  9.94
-  -----------------------------------------------------------
-  data required time                                  9.94
-  data arrival time                                  -0.57
-  -----------------------------------------------------------
-  slack (MET)                                         9.37
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  inner_angle_reg[15]/CLK (DFFARX1_RVT)                   0.00      10.00 r
+  library setup time                                     -0.05       9.95
+  data required time                                                 9.95
+  --------------------------------------------------------------------------
+  data required time                                                 9.95
+  data arrival time                                                 -3.92
+  --------------------------------------------------------------------------
+  slack (MET)                                                        6.03
 
 
 1

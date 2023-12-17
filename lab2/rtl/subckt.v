@@ -84,86 +84,83 @@ endmodule
 
 module lut(
     input [3:0] index,
-    output [15:0] ei_radian,
-    output [15:0] tanei
+    output reg [15:0] ei_radian,
+    output reg [15:0] tanei
 );
 
-    reg [15:0] tanei_const [15:0];
-    reg [15:0] ei_radian_const [15:0];
-
-    initial begin
-        // tanei_const[0] = 16'h8000;
-        // tanei_const[1] = 16'h4000;
-        // tanei_const[2] = 16'h2000;
-        // tanei_const[3] = 16'h1000;
-        // tanei_const[4] = 16'h0800;
-        // tanei_const[5] = 16'h0400;
-        // tanei_const[6] = 16'h0200;
-        // tanei_const[7] = 16'h0100;
-        // tanei_const[8] = 16'h0080;
-        // tanei_const[9] = 16'h0040;
-        // tanei_const[10] = 16'h0020;
-        // tanei_const[11] = 16'h0010;
-        // tanei_const[12] = 16'h0008;
-        // tanei_const[13] = 16'h0004;
-        // tanei_const[14] = 16'h0002;
-        // tanei_const[15] = 16'h0001;
-
-        // ei_radian_const[0] = 16'b0110010010000111;
-        // ei_radian_const[1] = 16'b0011101101011000;
-        // ei_radian_const[2] = 16'b0001111101011011;
-        // ei_radian_const[3] = 16'b0000111111101010;
-        // ei_radian_const[4] = 16'b0000011111111101;
-        // ei_radian_const[5] = 16'b0000001111111111;
-        // ei_radian_const[6] = 16'b0000000111111111;
-        // ei_radian_const[7] = 16'b0000000011111111;
-        // ei_radian_const[8] = 16'b0000000001111111;
-        // ei_radian_const[9] = 16'b0000000000111111;
-        // ei_radian_const[10] = 16'b0000000000011111;
-        // ei_radian_const[11] = 16'b0000000000001111;
-        // ei_radian_const[12] = 16'b0000000000000111;
-        // ei_radian_const[13] = 16'b0000000000000011;
-        // ei_radian_const[14] = 16'b0000000000000001;
-        // ei_radian_const[15] = 16'b0000000000000000;
-
-        
-        tanei_const[0] = 16'h0000;
-        tanei_const[1] = 16'h8000;
-        tanei_const[2] = 16'h4000;
-        tanei_const[3] = 16'h2000;
-        tanei_const[4] = 16'h1000;
-        tanei_const[5] = 16'h0800;
-        tanei_const[6] = 16'h0400;
-        tanei_const[7] = 16'h0200;
-        tanei_const[8] = 16'h0100;
-        tanei_const[9] = 16'h0080;
-        tanei_const[10] = 16'h0040;
-        tanei_const[11] = 16'h0020;
-        tanei_const[12] = 16'h0010;
-        tanei_const[13] = 16'h0008;
-        tanei_const[14] = 16'h0004;
-        tanei_const[15] = 16'h0002;
-
-        ei_radian_const[0] = 16'b0000000000000000;
-        ei_radian_const[1] = 16'b0110010010000111;
-        ei_radian_const[2] = 16'b0011101101011000;
-        ei_radian_const[3] = 16'b0001111101011011;
-        ei_radian_const[4] = 16'b0000111111101010;
-        ei_radian_const[5] = 16'b0000011111111101;
-        ei_radian_const[6] = 16'b0000001111111111;
-        ei_radian_const[7] = 16'b0000000111111111;
-        ei_radian_const[8] = 16'b0000000011111111;
-        ei_radian_const[9] = 16'b0000000001111111;
-        ei_radian_const[10] = 16'b0000000000111111;
-        ei_radian_const[11] = 16'b0000000000011111;
-        ei_radian_const[12] = 16'b0000000000001111;
-        ei_radian_const[13] = 16'b0000000000000111;
-        ei_radian_const[14] = 16'b0000000000000011;
-        ei_radian_const[15] = 16'b0000000000000001;
+    always@(*)
+    begin
+        case(index)
+        4'b0000: begin
+            ei_radian = 16'b0000000000000000;
+            tanei = 16'h0000;
+        end
+        4'b0001: begin
+            ei_radian = 16'b0110010010000111;
+            tanei = 16'h8000;
+        end
+        4'b0010: begin
+            ei_radian = 16'b0011101101011000;
+            tanei = 16'h4000;
+        end
+        4'b0011: begin
+            ei_radian = 16'b0001111101011011;
+            tanei = 16'h2000;
+        end
+        4'b0100: begin
+            ei_radian = 16'b0000111111101010;
+            tanei = 16'h1000;
+        end
+        4'b0101: begin
+            ei_radian = 16'b0000011111111101;
+            tanei = 16'h0800;
+        end
+        4'b0110: begin
+            ei_radian = 16'b0000001111111111;
+            tanei = 16'h0400;
+        end
+        4'b0111: begin
+            ei_radian = 16'b0000000111111111;
+            tanei = 16'h0200;
+        end
+        4'b1000: begin
+            ei_radian = 16'b0000000011111111;
+            tanei = 16'h0100;
+        end
+        4'b1001: begin
+            ei_radian = 16'b0000000001111111;
+            tanei = 16'h0080;
+        end
+        4'b1010: begin
+            ei_radian = 16'b0000000000111111;
+            tanei = 16'h0040;
+        end
+        4'b1011: begin
+            ei_radian = 16'b0000000000011111;
+            tanei = 16'h0020;
+        end
+        4'b1100: begin
+            ei_radian = 16'b0000000000001111;
+            tanei = 16'h0010;
+        end
+        4'b1101: begin
+            ei_radian = 16'b0000000000000111;
+            tanei = 16'h0008;
+        end
+        4'b1110: begin
+            ei_radian = 16'b0000000000000011;
+            tanei = 16'h0004;
+        end
+        4'b1110: begin
+            ei_radian = 16'b0000000000000001;
+            tanei = 16'h0002;
+        end
+        default: begin
+            ei_radian = 16'b0000000000000000;
+            tanei = 16'h0000;
+        end
+        endcase
     end
-
-    assign ei_radian = ei_radian_const[index];
-    assign tanei = tanei_const[index];
 
 endmodule
 

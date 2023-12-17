@@ -6,7 +6,7 @@ Report : timing
         -max_paths 1
 Design : multiply_and_add_unit
 Version: O-2018.06-SP1
-Date   : Sun Dec 17 13:40:30 2023
+Date   : Sun Dec 17 13:58:30 2023
 ****************************************
 
 Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
@@ -24,46 +24,47 @@ Wire Load Model Mode: enclosed
 
   Point                                    Incr       Path
   -----------------------------------------------------------
-  input external delay                     0.00       0.00 f
-  a[14] (in)                               0.00       0.00 f
-  U794/Y (NAND2X0_RVT)                     0.05       0.05 r
-  U881/Y (NAND3X0_RVT)                     0.06       0.11 f
-  U883/SO (HADDX1_RVT)                     0.13       0.24 r
-  U957/S (FADDX1_RVT)                      0.16       0.40 f
-  U982/S (FADDX1_RVT)                      0.16       0.56 r
-  U1004/S (FADDX1_RVT)                     0.16       0.72 f
-  U1024/S (FADDX1_RVT)                     0.16       0.88 r
-  U1042/S (FADDX1_RVT)                     0.16       1.04 f
-  U1058/S (FADDX1_RVT)                     0.16       1.20 r
-  U1072/S (FADDX1_RVT)                     0.16       1.36 f
-  U1085/S (FADDX1_RVT)                     0.16       1.52 r
-  U1096/S (FADDX1_RVT)                     0.16       1.68 f
-  U1104/S (FADDX1_RVT)                     0.16       1.84 r
-  U1110/S (FADDX1_RVT)                     0.16       2.00 f
-  U1114/S (FADDX1_RVT)                     0.16       2.16 r
-  U1115/S (FADDX1_RVT)                     0.16       2.32 f
-  U1117/Y (NAND2X0_RVT)                    0.08       2.40 r
-  U1133/S (FADDX1_RVT)                     0.16       2.55 f
-  U1134/Y (NAND2X0_RVT)                    0.06       2.62 r
-  U1161/Y (OA221X1_RVT)                    0.08       2.70 r
-  U1186/CO (FADDX1_RVT)                    0.09       2.79 r
-  U1187/CO (FADDX1_RVT)                    0.10       2.90 r
-  U1188/CO (FADDX1_RVT)                    0.11       3.00 r
-  U1189/CO (FADDX1_RVT)                    0.11       3.11 r
-  U1190/CO (FADDX1_RVT)                    0.11       3.21 r
-  U1191/CO (FADDX1_RVT)                    0.11       3.32 r
-  U1192/CO (FADDX1_RVT)                    0.10       3.42 r
-  U1193/CO (FADDX1_RVT)                    0.10       3.51 r
-  U1194/CO (FADDX1_RVT)                    0.10       3.61 r
-  U1195/CO (FADDX1_RVT)                    0.11       3.72 r
-  U1196/CO (FADDX1_RVT)                    0.11       3.82 r
-  U1197/CO (FADDX1_RVT)                    0.11       3.93 r
-  U1198/CO (FADDX1_RVT)                    0.10       4.03 r
-  U1199/CO (FADDX1_RVT)                    0.09       4.12 r
-  U1180/SO (HADDX1_RVT)                    0.11       4.23 f
-  U1185/S (FADDX1_RVT)                     0.13       4.36 r
-  out[15] (out)                            0.00       4.36 r
-  data arrival time                                   4.36
+  input external delay                     0.00       0.00 r
+  a[14] (in)                               0.00       0.00 r
+  U789/Y (NAND2X0_RVT)                     0.05       0.05 f
+  U858/Y (OA21X1_RVT)                      0.10       0.15 f
+  U923/S (FADDX1_RVT)                      0.15       0.30 r
+  U949/S (FADDX1_RVT)                      0.16       0.46 f
+  U971/S (FADDX1_RVT)                      0.15       0.61 r
+  U992/S (FADDX1_RVT)                      0.16       0.76 f
+  U1011/S (FADDX1_RVT)                     0.15       0.91 r
+  U1028/S (FADDX1_RVT)                     0.16       1.07 f
+  U1040/S (FADDX1_RVT)                     0.15       1.22 r
+  U1052/S (FADDX1_RVT)                     0.16       1.38 f
+  U1063/S (FADDX1_RVT)                     0.15       1.53 r
+  U1072/S (FADDX1_RVT)                     0.16       1.68 f
+  U1079/S (FADDX1_RVT)                     0.15       1.83 r
+  U1084/CO (FADDX1_RVT)                    0.10       1.94 r
+  U1087/S (FADDX1_RVT)                     0.15       2.09 f
+  U1089/Y (NAND3X0_RVT)                    0.06       2.15 r
+  U1091/Y (AOI222X1_RVT)                   0.16       2.30 f
+  U1092/Y (OR2X1_RVT)                      0.06       2.36 f
+  U1093/Y (NAND2X0_RVT)                    0.06       2.42 r
+  U1130/CO (FADDX1_RVT)                    0.11       2.54 r
+  U1129/CO (FADDX1_RVT)                    0.11       2.64 r
+  U1128/CO (FADDX1_RVT)                    0.11       2.75 r
+  U1127/CO (FADDX1_RVT)                    0.11       2.85 r
+  U1126/CO (FADDX1_RVT)                    0.11       2.96 r
+  U1125/CO (FADDX1_RVT)                    0.11       3.07 r
+  U1124/CO (FADDX1_RVT)                    0.11       3.18 r
+  U1123/CO (FADDX1_RVT)                    0.11       3.29 r
+  U1122/CO (FADDX1_RVT)                    0.11       3.39 r
+  U1121/CO (FADDX1_RVT)                    0.11       3.50 r
+  U1120/CO (FADDX1_RVT)                    0.11       3.61 r
+  U1119/S (FADDX1_RVT)                     0.15       3.77 f
+  U1144/Y (OR2X1_RVT)                      0.07       3.84 f
+  U1146/Y (AND2X1_RVT)                     0.05       3.89 f
+  U1147/SO (HADDX1_RVT)                    0.11       3.99 r
+  U1190/CO (FADDX1_RVT)                    0.10       4.09 r
+  U1175/S (FADDX1_RVT)                     0.15       4.25 f
+  U1176/S (FADDX1_RVT)                     0.14       4.38 r
+  out[15] (out)                            0.00       4.38 r
+  data arrival time                                   4.38
   -----------------------------------------------------------
   (Path is unconstrained)
 

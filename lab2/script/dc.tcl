@@ -1,4 +1,4 @@
-set top "multiply_and_add_unit"
+set top "cordic"
 
 set search_path 	"../lib"
 set target_library	"saed32rvt_ss0p95v125c.db sram_8kx32_ss_0p99v_0p99v_125c.db"
@@ -8,9 +8,9 @@ set_svf -off
 
 analyze -format sverilog -vcs [glob -nocomplain -directory ../rtl/ *.v]
 set rtl_dir "../rtl"
-analyze -format verilog $rtl_dir/cordic.v
 analyze -format verilog $rtl_dir/subckt.v
 analyze -format verilog $rtl_dir/mac.v
+analyze -format verilog $rtl_dir/cordic.v
 elaborate $top
 current_design $top
 check_design
@@ -32,3 +32,7 @@ compile_ultra
 report_area -hierarchy > ../outputs/$top.area.rpts
 report_power > ../outputs/$top.power.rpts
 report_timing > ../outputs/$top.timing.rpts
+
+
+uniquify
+write -format verilog -hier -out ../outputs/$top.v

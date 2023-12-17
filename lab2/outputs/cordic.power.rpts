@@ -4,7 +4,7 @@ Report : power
         -analysis_effort low
 Design : cordic
 Version: O-2018.06-SP1
-Date   : Sun Dec 17 13:29:15 2023
+Date   : Sun Dec 17 14:50:25 2023
 ****************************************
 
 
@@ -19,7 +19,6 @@ Wire Load Model Mode: enclosed
 Design        Wire Load Model            Library
 ------------------------------------------------
 cordic                 8000              saed32rvt_ss0p95v125c
-lut                    ForQA             saed32rvt_ss0p95v125c
 
 
 Global Operating Voltage = 0.95 
@@ -31,12 +30,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  =  21.3650 uW   (98%)
-  Net Switching Power  = 528.0056 nW    (2%)
+  Cell Internal Power  =  44.4892 uW   (95%)
+  Net Switching Power  =   2.5444 uW    (5%)
                          ---------
-Total Dynamic Power    =  21.8930 uW  (100%)
+Total Dynamic Power    =  47.0336 uW  (100%)
 
-Cell Leakage Power     =  27.5299 uW
+Cell Leakage Power     =  87.4604 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -46,9 +45,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          20.5605        7.8879e-02        1.9114e+07           39.7538  (  80.44%)
+register          39.8746            0.9615        3.3414e+07           74.2504  (  55.21%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      0.8045            0.4491        8.4155e+06            9.6691  (  19.56%)
+combinational      4.6147            1.5829        5.4046e+07           60.2436  (  44.79%)
 --------------------------------------------------------------------------------------------------
-Total             21.3650 uW         0.5280 uW     2.7530e+07 pW        49.4230 uW
+Total             44.4892 uW         2.5444 uW     8.7460e+07 pW       134.4940 uW
 1
