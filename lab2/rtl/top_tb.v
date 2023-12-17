@@ -1,46 +1,51 @@
 module top_tb();
 
-    reg split;
-    reg [47:0] inputs;
-    reg [7:0] a;
-    reg [7:0] b;
-    wire [47:0] outputs;
+    reg clk;
+    reg rst_n;
+    reg start;
+    reg [15:0] angle;
+    wire [15:0] cos;
+    wire [15:0] sin;
+
+    // clk
+    initial begin
+        clk = 1'b0;
+        forever begin
+            #5 clk = ~clk;
+        end
+    end
 
     initial begin
-        split <= 1'b1;
-        inputs <= 48'b0;
-        a <= 8'b1;
-        b <= 8'b1;
-        # 10;
-        a <= 8'hff;
-        b <= 8'hff;
-        inputs <= 48'h12346789;
-        # 10;
-        a <= 8'h37;
-        b <= 8'ha4;
-//        # 10;
-//        a <= 8'hff;
-//        b <= 8'h24;
-//        # 10;
-//        a <= 8'hff;
-//        b <= 8'h78;
-        # 10;
-        split <= 1'b0;
-        a <= 8'h56;
-        b <= 8'h79;
-        # 10;
-        a <= 8'h56;
-        b <= 8'h89;
-        # 10;
-        a <= 8'h88;
-        b <= 8'h89;
-        inputs <= 48'h6789abcd;
-        
+        rst_n = 1'b0;
+        #5 rst_n = 1'b1;
+    end
 
+    initial begin
+        start = 1'b0;
+        #16 start = 1'b1;
+        #10 start = 1'b0;
+        #174 start =1'b1;
+        #10 start=1'b0;
+    end
+
+    initial begin
+        // pai/6, sin=0.5, cos=(3/4)^0.5
+        angle = 16'b0100001100000101;
+        #100
+        // pai/4, sin=(2/4)^0.5, cos=(2/4)^0.5
+        angle = 16'b0110010010000111;
     end
 
 
-    fused_signed_mac_32p8t8_2x24p8t4 i_mac_unit(.split(split), .in(inputs), .a(a), .b(b), .out(outputs));
+
+    cordic i_cordic_unit (
+        .clk(clk),
+        .rst_n(rst_n),
+        .start(start),
+        .angle(angle),
+        .cos(cos),
+        .sin(sin)
+    );
 
 
 endmodule
