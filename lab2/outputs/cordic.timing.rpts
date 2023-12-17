@@ -1,0 +1,53 @@
+Warning: Design 'cordic' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : cordic
+Version: O-2018.06-SP1
+Date   : Sun Dec 17 13:01:49 2023
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: working_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: state_reg[3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cordic             8000                  saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  working_reg/CLK (DFFARX1_RVT)            0.00       0.00 r
+  working_reg/Q (DFFARX1_RVT)              0.20       0.20 f
+  U176/Y (AND2X1_RVT)                      0.13       0.33 f
+  U179/Y (NBUFFX2_RVT)                     0.09       0.42 f
+  U197/Y (OA21X1_RVT)                      0.07       0.49 f
+  U199/Y (AO21X1_RVT)                      0.05       0.54 f
+  U168/Y (OA222X1_RVT)                     0.07       0.61 f
+  state_reg[3]/D (DFFARX1_RVT)             0.00       0.61 f
+  data arrival time                                   0.61
+
+  clock clk (rise edge)                   10.00      10.00
+  clock network delay (ideal)              0.00      10.00
+  state_reg[3]/CLK (DFFARX1_RVT)           0.00      10.00 r
+  library setup time                      -0.06       9.94
+  data required time                                  9.94
+  -----------------------------------------------------------
+  data required time                                  9.94
+  data arrival time                                  -0.61
+  -----------------------------------------------------------
+  slack (MET)                                         9.33
+
+
+1
