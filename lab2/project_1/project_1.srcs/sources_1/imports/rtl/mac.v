@@ -1,23 +1,4 @@
-// module adder_16bit(
-//     input   [15:0] a,
-//     input   [15:0] b,
-//     output  [15:0] out
-// );
 
-//     wire [15:0] s;
-//     wire [15:0] cout;
-
-//     ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
-//     generate 
-//         genvar i_adder;
-//         for(i_adder=1; i_adder<16; i_adder=i_adder+1) begin: adder_for_bits
-//             fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
-//         end
-//     endgenerate
-
-//     assign out[15:0] = s[15:0];
-
-// endmodule
 
 
 
@@ -74,7 +55,7 @@ module unsigned_unit_line(
 endmodule
 
 
-module multiply_and_add(
+module multiply_and_add_unit(
     input [15:0] in,
     input [15:0] a,
     input [15:0] b,
@@ -90,9 +71,9 @@ module multiply_and_add(
     unsigned_unit_line          i_bul_2 (.in_x({1'b0, s_line[1][15:1]}), .in_a(a), .in_b(b[2]), .cin(cout_line[1]), .s(s_line[2]), .cout(cout_line[2]));
 
     generate
-        genvar i_bul;
-        for(i_bul=2;i_bul<16;i_bul=i_bul+1) begin: unsigned_unit_line_generate
-            unsigned_unit_line  i_bul (.in_x({1'b0, s_line[i_bul-1][15:1]}), .in_a(a), .in_b(b[i_bul]), .cin(cout_line[i_bul-1]), .s(s_line[i_bul]), .cout(cout_line[i_bul]));
+        genvar i_bul_mac;
+        for(i_bul_mac=2;i_bul_mac<16;i_bul_mac=i_bul_mac+1) begin: unsigned_unit_line_generate
+            unsigned_unit_line  i_bul_mac_unit (.in_x({1'b0, s_line[i_bul_mac-1][15:1]}), .in_a(a), .in_b(b[i_bul_mac]), .cin(cout_line[i_bul_mac-1]), .s(s_line[i_bul_mac]), .cout(cout_line[i_bul_mac]));
         end
     endgenerate
 
@@ -104,7 +85,7 @@ module multiply_and_add(
         end
     endgenerate
 
-    adder_16bit i_adder_16b_0 (.a({1'b0, s_line[15]}), .b(cout_line[15]), .out(product_32b[31:16]));
+    adder_16bit i_adder_16b_0 (.a({s_line[15][15:0]}), .b(cout_line[15]), .out(product_32b[31:16]));
 
     // neg=1, minus; neg=0, plus
     wire [15:0] pos_or_neg;

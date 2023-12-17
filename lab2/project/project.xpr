@@ -54,14 +54,16 @@
       <File Path="$PSRCDIR/sources_1/imports/rtl/subckt.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../rtl/subckt.v"/>
-          <Attr Name="ImportTime" Val="1702365690"/>
+          <Attr Name="ImportTime" Val="1702784784"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/multiplier.v">
-        <FileInfo RelPath="multiplier.v">
+      <File Path="$PSRCDIR/sources_1/imports/rtl/mac.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../rtl/mac.v"/>
+          <Attr Name="ImportTime" Val="1702792275"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -70,7 +72,7 @@
       <File Path="$PSRCDIR/sources_1/imports/rtl/cordic.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../rtl/cordic.v"/>
-          <Attr Name="ImportTime" Val="1702368477"/>
+          <Attr Name="ImportTime" Val="1702792388"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -79,17 +81,15 @@
       <File Path="$PSRCDIR/sources_1/imports/rtl/top_tb.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../rtl/top_tb.v"/>
-          <Attr Name="ImportTime" Val="1702258257"/>
+          <Attr Name="ImportTime" Val="1702603690"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/fused_signed_mac_32p8t8_2x24p8t4.v">
-        <FileInfo>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/multiplier.v">
+        <FileInfo RelPath="multiplier.v">
           <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../rtl/fused_signed_mac_32p8t8_2x24p8t4.v"/>
-          <Attr Name="ImportTime" Val="1702258257"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
