@@ -21,8 +21,6 @@ INFO: [VRFC 10-311] analyzing module unsigned_unit_line
 INFO: [VRFC 10-311] analyzing module multiply_and_add
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/lab2/project/project.srcs/sources_1/imports/rtl/cordic.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module cordic
-WARNING: [VRFC 10-756] identifier new_sin is used before its declaration [D:/code/courses/lab2/project/project.srcs/sources_1/imports/rtl/cordic.v:104]
-WARNING: [VRFC 10-756] identifier new_cos is used before its declaration [D:/code/courses/lab2/project/project.srcs/sources_1/imports/rtl/cordic.v:123]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/lab2/project/project.srcs/sources_1/imports/rtl/top_tb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top_tb
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/lab2/project/project.sim/sim_1/behav/glbl.v" into library xil_defaultlib

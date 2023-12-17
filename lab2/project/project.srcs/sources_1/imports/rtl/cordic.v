@@ -15,6 +15,9 @@ module cordic (
     wire [15:0] ei_radian;
     wire [15:0] tanei;
     wire [15:0] new_inner_angle;
+    wire [15:0] new_sin;
+    wire [15:0] new_cos;
+    wire neg;
 
     // sample the input angle
     always@(posedge clk or negedge rst_n) begin
@@ -130,9 +133,6 @@ module cordic (
     // look up table unit
     lut i_lut_0 (.index(state), .ei_radian(ei_radian),  .tanei(tanei));
 
-    wire [15:0] new_sin;
-    wire [15:0] new_cos;
-    wire neg;
     // if <=, neg=0, add in sin (0) and subtract in cos (1); else, neg=1, subtract in sin and add in cos
     assign neg = (inner_angle <= sampled_angle) ? 0 : 1;
     
