@@ -22,5 +22,22 @@ module accelerator(
     output  [3:0]   inference_result
 );
 
+    reg working;
+
+    always@(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin
+            working <= 1'b0;
+        end
+        else begin
+            if(start) begin
+                working <= 1'b1;
+            end
+            else begin
+                working <= working;
+            end
+        end
+    end
+
+    pe_line_parallel plp (.clk());
 
 endmodule
