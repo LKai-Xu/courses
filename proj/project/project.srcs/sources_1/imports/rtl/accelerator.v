@@ -70,15 +70,10 @@ module accelerator(
         end
         else begin
             if(start) begin
-                state <= 4'b0;
+                state <= 4'b0001;
             end
             else begin
                 case(state)
-                    4'b0000:    begin
-                                    if(start) begin
-                                        state <= 4'b0001;
-                                    end
-                                end
                     4'b0001:    begin
                                     if(counter == 7'b1100100) begin
                                         state <= 4'b0010;

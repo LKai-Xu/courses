@@ -7,6 +7,14 @@ module top_tb();
 
     wire [3:0] inference_result;
 
+    wire weight_we;
+    wire [6:0] weight_addr;
+    wire [79:0] weight_data;
+
+    wire input_we;
+    wire [6:0] input_addr;
+    wire [15:0] input_data;
+
     // clk
     initial begin
         clk = 1'b0;
@@ -49,11 +57,6 @@ module top_tb();
         .input_addr(input_addr),
         .input_data(input_data),
 
-        // output buffer read/write
-        .result_we(result_we),
-        .result_addr(result_addr),
-        .result_data(result_data),
-
         .inference_result(inference_result)
     );
 
@@ -81,13 +84,13 @@ module top_tb();
 
     // weight loading initially
     initial begin
-        $readmemb("./w1.bin", sram_weight.mem_r, 0,99);
-        $readmemb("./w2.bin", sram_weight.mem_r, 100);
+        $readmemb("D:\\code\\courses\\proj\\project_ref\\w1.bin", sram_weight.mem_r, 0,99);
+        $readmemb("D:\\code\\courses\\proj\\project_ref\\w2.bin", sram_weight.mem_r, 100);
     end
 
     // input loading initially
     initial begin
-        $readmemb("./im.bin", sram_input.mem_r);
+        $readmemb("D:\\code\\courses\\proj\\project_ref\\im.bin", sram_input.mem_r);
     end
 
 endmodule

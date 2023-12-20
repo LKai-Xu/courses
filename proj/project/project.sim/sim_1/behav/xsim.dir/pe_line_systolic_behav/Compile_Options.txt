@@ -1,1 +1,0 @@
--wto "406b5281eb194ca4a0cfa62343a0f073" --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "pe_line_systolic_behav" "xil_defaultlib.pe_line_systolic" "xil_defaultlib.glbl" -log "elaborate.log" 
