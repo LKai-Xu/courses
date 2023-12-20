@@ -57,10 +57,10 @@ module top_tb();
         .inference_result(inference_result)
     );
 
-    sram sram_weight (
-        ADDR_WIDTH = 7,
-        DATA_WIDTH = 80
-    )(
+    sram #(
+        .ADDR_WIDTH(7),
+        .DATA_WIDTH(80)
+    ) sram_weight (
         .clk(clk),
         .addr(weight_addr),
         .din({80'b0}),
@@ -68,10 +68,10 @@ module top_tb();
         .dout(weight_data)
     );
 
-    sram sram_input (
-        ADDR_WIDTH = 7,
-        DATA_WIDTH = 16
-    )(
+    sram #(
+        .ADDR_WIDTH(7),
+        .DATA_WIDTH(16)
+    ) sram_input (
         .clk(clk),
         .addr(input_addr),
         .din({16'b0}),

@@ -1,0 +1,4 @@
+Running: xsim.dir/pe_line_systolic_behav/xsimk.exe -simmode gui -wdb pe_line_systolic_behav.wdb -simrunnum 0 -socket 50162
+Design successfully loaded
+Design Loading Memory Usage: 11712 KB (Peak: 11712 KB)
+Design Loading CPU Usage: 62 ms
