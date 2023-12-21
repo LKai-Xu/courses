@@ -25,6 +25,7 @@ module accelerator(
     reg [7:0] mid_result [9:0];
 
     wire [479:0] pe_line_out;
+    reg [479:0] partial_result;
 
     // working
     always@(posedge clk or negedge rst_n) begin
@@ -192,8 +193,35 @@ module accelerator(
         end
     end
 
+    wire [15:0] in_x;
+    wire [79:0] in_w;
+    assign in_x = input_data;
+    assign in_w = weight_data;
 
-    pe_line_parallel plp (.clk(clk), .rst_n(rst_n), .split(parallel), .in_x(in_x), .in_w(in_w), .out(pe_line_out));
+    pe_line_parallel plp (
+        .clk(clk), 
+        .rst_n(rst_n), 
+        .partial_result(partial_result), 
+        .in_x(in_x), 
+        .in_w(in_w), 
+        .split(parallel), 
+        .out(pe_line_out)
+    );
+
+    // partial result
+    always@(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin
+            partial_result <= 480'b0;
+        end
+        else begin
+            if(start) begin
+                partial_result <= 480'b0;
+            end
+            else begin
+                partial_result <= pe_line_out;
+            end
+        end
+    end
 
     // mid_result
     generate 
@@ -206,7 +234,7 @@ module accelerator(
                 else begin
                     if(state==4'b0001 & counter == 7'b1100100) begin
                         // scale 
-                        mid_result[i_mid] <= pe_line_out[i_mid*48+9:i_mid*48+2];
+                        mid_result[i_mid] <= partial_result[i_mid*48+9:i_mid*48+2];
                     end
                     else if(state==4'b0010) begin
                         //relu
@@ -219,7 +247,7 @@ module accelerator(
                     end
                     else if(state==4'b0011 & counter == 7'b0001010) begin
                         // scale
-                        mid_result[i_mid] <= pe_line_out[i_mid*48+11:i_mid*48+4];
+                        mid_result[i_mid] <= partial_result[i_mid*48+11:i_mid*48+4];
                     end
                     else begin
                         mid_result[i_mid] <= mid_result[i_mid];

@@ -15,15 +15,11 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/projec
 INFO: [VRFC 10-311] analyzing module fused_signed_mac_32p8t8_2x24p8t4
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/pe.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module pe_parallel
-INFO: [VRFC 10-2458] undeclared symbol result, assumed default net type wire [D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/pe.v:83]
-INFO: [VRFC 10-2458] undeclared symbol mac_out, assumed default net type wire [D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/pe.v:83]
 INFO: [VRFC 10-311] analyzing module pe_line_parallel
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/sram.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module sram
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/accelerator.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module accelerator
-INFO: [VRFC 10-2458] undeclared symbol in_x, assumed default net type wire [D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/accelerator.v:196]
-INFO: [VRFC 10-2458] undeclared symbol in_w, assumed default net type wire [D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/accelerator.v:196]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/project.srcs/sources_1/imports/rtl/top_tb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top_tb
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/code/courses/proj/project/project.sim/sim_1/behav/glbl.v" into library xil_defaultlib

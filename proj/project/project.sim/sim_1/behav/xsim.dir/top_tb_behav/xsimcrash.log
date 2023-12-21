@@ -1,0 +1,41 @@
+Unable to capture context for thread 40364 in process 22792, can not generate back trace
+Exception at PC 0x00007FFE9861CF19
+Unable to capture context for thread 43320 in process 22792, can not generate back trace
+Exception at PC 0x00007FFE9861CF19
+Unable to capture context for thread 43320 in process 22792, can not generate back trace
+Unable to capture context for thread 40364 in process 22792, can not generate back trace
+Exception at PC 0x00007FFDE479BB93
+Printing stacktrace...
+
+Exception at PC 0x00007FFE9861CF19
+Unable to capture context for thread 41228 in process 22792, can not generate back trace
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+[0]  [0x00007FFDE479BB93]
+[1]  [0x00007FFDE479BB93]
+[2]  [0x00007FFDE479B4A1]
+[3]  [0x00007FFDE479B3EF]
+[4]  [0x00007FFDE47819FE]
+[5]  [0x00007FFDE4780ED1]
+[6]  [0x00007FFDE4780D76]
+[7]  [0x00007FFDE47279F6]
+[8]  [0x00007FFDE4717AFB]
+[9]  [0x00007FFDE483E90A]
+[10]  [0x00007FFDE4859F87]
+[11]  [0x00007FFDE485A05F]
+[12] (BaseThreadInitThunk+0x14) [0x00007FFE99777344]
+[13] (RtlUserThreadStart+0x21) [0x00007FFE9ABC26B1]
+Done
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19
+Exception at PC 0x00007FFE9861CF19

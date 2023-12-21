@@ -80,7 +80,7 @@ module pe_parallel(
         end
     end
 
-    fused_signed_mac_32p8t8_2x24p8t4 i_mac_unit (.split(split), .in(result), .a(weight), .b(buffered_in), .out(mac_out));
+    fused_signed_mac_32p8t8_2x24p8t4 i_mac_unit (.split(split), .in(partial_result), .a(weight), .b(buffered_in), .out(mac_result));
 
 
 endmodule
@@ -116,21 +116,22 @@ endmodule
 module pe_line_parallel(
     input clk,
     input rst_n,
-    input split,
+    input [479:0] partial_result,
     input [7:0] in_x,
     input [79:0] in_w,
+    input split,
     output [479:0] out
 );
 
-    pe_parallel i_pe_unit_0 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[7:0]),      .split(split),  .result(out[47:0]));
-    pe_parallel i_pe_unit_1 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[15:8]),     .split(split),  .result(out[95:48]));
-    pe_parallel i_pe_unit_2 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[23:16]),    .split(split),  .result(out[143:96]));
-    pe_parallel i_pe_unit_3 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[31:24]),    .split(split),  .result(out[191:144]));
-    pe_parallel i_pe_unit_4 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[39:32]),    .split(split),  .result(out[239:192]));
-    pe_parallel i_pe_unit_5 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[47:40]),    .split(split),  .result(out[287:240]));
-    pe_parallel i_pe_unit_6 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[55:48]),    .split(split),  .result(out[335:288]));
-    pe_parallel i_pe_unit_7 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[63:56]),    .split(split),  .result(out[383:336]));
-    pe_parallel i_pe_unit_8 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[71:64]),    .split(split),  .result(out[431:384]));
-    pe_parallel i_pe_unit_9 (.clk(clk), .rst_n(rst_n),  .a(in_x),   .b(in_w[79:72]),    .split(split),  .result(out[479:432]));
+    pe_parallel i_pe_unit_0 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[47:0]),      .a(in_x),   .b(in_w[7:0]),      .split(split),  .mac_result(out[47:0]));
+    pe_parallel i_pe_unit_1 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[95:48]),     .a(in_x),   .b(in_w[15:8]),     .split(split),  .mac_result(out[95:48]));
+    pe_parallel i_pe_unit_2 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[143:96]),    .a(in_x),   .b(in_w[23:16]),    .split(split),  .mac_result(out[143:96]));
+    pe_parallel i_pe_unit_3 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[191:144]),   .a(in_x),   .b(in_w[31:24]),    .split(split),  .mac_result(out[191:144]));
+    pe_parallel i_pe_unit_4 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[239:192]),   .a(in_x),   .b(in_w[39:32]),    .split(split),  .mac_result(out[239:192]));
+    pe_parallel i_pe_unit_5 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[287:240]),   .a(in_x),   .b(in_w[47:40]),    .split(split),  .mac_result(out[287:240]));
+    pe_parallel i_pe_unit_6 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[335:288]),   .a(in_x),   .b(in_w[55:48]),    .split(split),  .mac_result(out[335:288]));
+    pe_parallel i_pe_unit_7 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[383:336]),   .a(in_x),   .b(in_w[63:56]),    .split(split),  .mac_result(out[383:336]));
+    pe_parallel i_pe_unit_8 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[431:384]),   .a(in_x),   .b(in_w[71:64]),    .split(split),  .mac_result(out[431:384]));
+    pe_parallel i_pe_unit_9 (.clk(clk), .rst_n(rst_n),  .partial_result(partial_result[479:432]),   .a(in_x),   .b(in_w[79:72]),    .split(split),  .mac_result(out[479:432]));
 
 endmodule
