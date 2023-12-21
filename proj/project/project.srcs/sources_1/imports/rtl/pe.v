@@ -50,15 +50,15 @@
 module pe_parallel(
     input clk,
     input rst_n,
+    input [47:0] partial_result,
     input [7:0] a,
     input [7:0] b,
     input split,
-    output reg [47:0] result
+    output [47:0] mac_result
 );
 
     reg [7:0] buffered_in;
     reg [7:0] weight;
-    wire [47:0] mac_out;
 
     // input data b
     always@(posedge clk or negedge rst_n) begin
@@ -82,15 +82,6 @@ module pe_parallel(
 
     fused_signed_mac_32p8t8_2x24p8t4 i_mac_unit (.split(split), .in(result), .a(weight), .b(buffered_in), .out(mac_out));
 
-    // partail sum result
-    always@(posedge clk or negedge rst_n) begin
-        if(!rst_n == 1'b1) begin
-            result <= 48'b0;
-        end
-        else begin
-            result <= mac_out;
-        end        
-    end
 
 endmodule
 

@@ -229,11 +229,33 @@ module accelerator(
         end
     endgenerate
 
+    wire [3:0] mid_index [4:0];
+    wire [7:0] mid_max_value [4:0];
+    assign mid_index[0] = (mid_result[1] > mid_result[0]) ? 4'b0001 : 4'b0000;
+    assign mid_max_value[0] = (mid_result[1] > mid_result[0]) ? mid_result[1] : mid_result[0];
+    assign mid_index[1] = (mid_result[3] > mid_result[2]) ? 4'b0011 : 4'b0010;
+    assign mid_max_value[1] = (mid_result[3] > mid_result[2]) ? mid_result[3] : mid_result[2];
+    assign mid_index[2] = (mid_result[5] > mid_result[4]) ? 4'b0101 : 4'b0100;
+    assign mid_max_value[2] = (mid_result[5] > mid_result[4]) ? mid_result[5] : mid_result[4];
+    assign mid_index[3] = (mid_result[7] > mid_result[6]) ? 4'b0111 : 4'b0110;
+    assign mid_max_value[3] = (mid_result[7] > mid_result[6]) ? mid_result[7] : mid_result[6];
+    assign mid_index[4] = (mid_result[9] > mid_result[8]) ? 4'b1001 : 4'b1000;
+    assign mid_max_value[4] = (mid_result[9] > mid_result[8]) ? mid_result[9] : mid_result[8];
+
+    wire [3:0] mid_index_2 [1:0];
+    wire [7:0] mid_max_value_2 [1:0];
+    assign mid_index_2[0] = (mid_max_value[1] > mid_max_value[0]) ? mid_index[1] : mid_index[0];
+    assign mid_max_value_2[0] = (mid_max_value[1] > mid_max_value[0]) ? mid_max_value[1] : mid_max_value[0];
+    assign mid_index_2[1] = (mid_max_value[3] > mid_max_value[2]) ? mid_index[3] : mid_index[2];
+    assign mid_max_value_2[1] = (mid_max_value[3] > mid_max_value[2]) ? mid_max_value[3] : mid_max_value[2];
+
+    wire [3:0] mid_index_3;
+    wire [7:0] mid_max_value_3;
+    assign mid_index_3 = (mid_max_value_2[1] > mid_max_value[4]) ? mid_index_2[1] : mid_index[4];
+    assign mid_max_value_3 = (mid_max_value_2[1] > mid_max_value[4]) ? mid_max_value_2[1] : mid_max_value[4];
+
     wire [3:0] max_index;
-    wire [3:0] mid_index;
-    wire [7:0] mid_max_value;
-    assign mid_index = (mid_result[1] > mid_result[0]) ? 4'b0001 : 4'b0000;
-    assign mid_max_value = (mid_result[1] > mid_result[0]) ? mid_result[1] : mid_result[0];
+    assign max_index = (mid_max_value_3 > mid_max_value_2[0]) ? mid_index_3 : mid_index_2[0];
 
     // inference result
     always@(posedge clk or negedge rst_n) begin

@@ -1,8 +1,16 @@
+'''
+Author: LKai-Xu
+Date: 2023-12-19 09:20:47
+LastEditors: LKai-Xu
+LastEditTime: 2023-12-21 10:35:06
+FilePath: \courses\proj\project_ref\py\sim.py
+Description: 
+'''
 from weights import w1, w2
 from images import im1, im4, im6, im7, im9
 
 # you can change the image and predict the corresponding number
-im = im7
+im = im6
 
 # layer 1
 x1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
