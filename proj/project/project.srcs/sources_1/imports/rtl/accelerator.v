@@ -61,7 +61,8 @@ module accelerator(
     // state
     // 4'b0000, idle
     // 4'b0001, FC LAYER 1
-    // 4'b0010, scale and round
+    // 4'b0010, scale
+    // 4'b0011, relu
     // 4'b0100, FC LAYER 2
     // 4'b0101, scale
     // 4'b0110, argmax
@@ -84,6 +85,9 @@ module accelerator(
                                     end
                                 end
                     4'b0010:    begin
+                                    state <= 4'b0011;
+                                end
+                    4'b0011:    begin
                                     state <= 4'b0100;
                                 end
                     4'b0100:    begin
@@ -252,11 +256,11 @@ module accelerator(
                     mid_result[i_mid] <= 8'b0;
                 end
                 else begin
-                    if(state==4'b0001 & counter == 7'b1100011) begin
+                    if(state==4'b0010) begin
                         // scale 
-                        mid_result[i_mid] <= partial_result[i_mid*48+9:i_mid*48+2];
+                        mid_result[i_mid] <= pe_line_out[i_mid*48+9:i_mid*48+2];
                     end
-                    else if(state==4'b0010) begin
+                    else if(state==4'b0011) begin
                         //relu
                         if (mid_result[i_mid][7] == 1) begin
                             mid_result[i_mid] <= 8'b0;

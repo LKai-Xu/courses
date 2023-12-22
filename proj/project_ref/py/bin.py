@@ -1,5 +1,15 @@
+'''
+Author: LKai-Xu
+Date: 2023-12-19 09:20:47
+LastEditors: LKai-Xu
+LastEditTime: 2023-12-22 22:34:19
+FilePath: \courses\proj\project_ref\py\bin.py
+Description: 
+'''
 from weights import w1, w2
-from images import im1, im4, im6, im7, im9
+from images import im1, im4, im6, im7, im9, im_test
+
+import numpy as np
 
 
 def int_to_bin(number, bw):
@@ -44,3 +54,18 @@ if __name__ == '__main__':
 
     with open('w2.bin', 'w') as f:
         f.write(weight_to_bin(w2))
+
+    with open('im_test.bin','w') as f:
+        f.write(image_to_bin(im_test))
+
+    w1_test = [[1 for _ in range(len(row))] for row in w1]
+    # print(type(w1_test))
+    # print(w1_test)
+    with open('w1_test.bin','w') as f:
+        f.write(weight_to_bin(w1_test))
+
+    w2_test = [[1 for _ in range(len(row))] for row in w2]
+    # print(type(w2_test))
+    # print(w2_test)
+    with open('w2_test.bin','w') as f:
+        f.write(weight_to_bin(w2_test))
