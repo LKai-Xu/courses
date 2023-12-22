@@ -2,8 +2,8 @@
 verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/subckt.v"
 verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/fused_signed_mac_32p8t8_2x24p8t4.v"
 verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/pe.v"
-verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/sram.v"
 verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/accelerator.v"
+verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/sram.v"
 verilog xil_defaultlib  "../../../project.srcs/sources_1/imports/rtl/top_tb.v"
 
 # compile glbl module

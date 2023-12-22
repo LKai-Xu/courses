@@ -13,6 +13,7 @@ module top_tb();
 
     wire input_we;
     wire [6:0] input_addr;
+    wire [15:0] input_w_data;
     wire [15:0] input_data;
 
     // clk
