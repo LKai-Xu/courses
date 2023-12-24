@@ -68,7 +68,10 @@ module pe_parallel(
             buffered_in <= 8'b0;
         end
         else begin
-            if(working) begin
+            if(flush) begin
+                buffered_in <= 8'b0;
+            end
+            else if(working) begin
                 buffered_in <= a;
             end
             else begin
@@ -83,7 +86,10 @@ module pe_parallel(
             weight <= 8'b0;
         end
         else begin
-            if(working) begin
+            if(flush) begin
+                weight <= 8'b0;
+            end
+            else if(working) begin
                 weight <= b;
             end
             else begin

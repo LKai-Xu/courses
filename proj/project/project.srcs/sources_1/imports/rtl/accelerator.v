@@ -269,9 +269,9 @@ module accelerator(
                             mid_result[i_mid] <= mid_result[i_mid];
                         end
                     end
-                    else if(state==4'b0110) begin
+                    else if(state==4'b0101) begin
                         // scale
-                        mid_result[i_mid] <= partial_result[i_mid*48+11:i_mid*48+4];
+                        mid_result[i_mid] <= pe_line_out[i_mid*48+11:i_mid*48+4];
                     end
                     else begin
                         mid_result[i_mid] <= mid_result[i_mid];
