@@ -14,6 +14,7 @@ module accelerator(
     output  reg [6:0]   input_addr,
     input   [15:0]  input_data,
 
+    output  reg valid,
     output  reg [3:0]   inference_result
 );
 
@@ -23,6 +24,7 @@ module accelerator(
     reg [6:0] counter;
 
     reg [7:0] mid_result [9:0];
+    reg [7:0] mid_result_buffer [9:0];
 
     wire [479:0] pe_line_out;
     reg [479:0] partial_result;
@@ -37,7 +39,15 @@ module accelerator(
                 working <= 1'b1;
             end
             else begin
-                working <= working;
+                if(parallel == 1'b1 & state == 4'b1011) begin
+                    working <= 1'b0;
+                end
+                else if(parallel == 1'b0 & state == 4'b0110) begin
+                    working <= 1'b0;
+                end
+                else begin
+                    working <= working;
+                end
             end
         end
     end
@@ -66,6 +76,12 @@ module accelerator(
     // 4'b0100, FC LAYER 2
     // 4'b0101, scale
     // 4'b0110, argmax
+    // if split
+    // 4'b0111, buffer
+    // 4'b1000, relu for image 2
+    // 4'b1001, FC LAYER 2 for image 2
+    // 4'b1010, scale for image 2
+    // 4'b1011, argmax for image 2
     always@(posedge clk or negedge rst_n) begin
         if(!rst_n) begin
             state <= 4'b0;
@@ -102,6 +118,31 @@ module accelerator(
                                     state <= 4'b0110;
                                 end
                     4'b0110:    begin
+                                    if(parallel) begin
+                                        state <= 4'b0111;
+                                    end
+                                    else begin
+                                        state <= 4'b0000;
+                                    end
+                                end
+                    4'b0111:    begin
+                                    state <= 4'b1000;
+                                end
+                    4'b1000:    begin
+                                    state <= 4'b1001;
+                                end
+                    4'b1001:    begin
+                                    if(counter == 7'b0001001) begin
+                                        state <= 4'b1010;
+                                    end
+                                    else begin
+                                        state <= state;
+                                    end
+                                end
+                    4'b1010:    begin
+                                    state <= 4'b1011;
+                                end
+                    4'b1011:    begin
                                     state <= 4'b0000;
                                 end
                     default:    begin
@@ -139,6 +180,14 @@ module accelerator(
                                         counter <= 7'b0;
                                     end
                                 end
+                    4'b1001:    begin
+                                    if(counter < 7'b0001001) begin
+                                        counter <= counter + 1;
+                                    end
+                                    else begin
+                                        counter <= 7'b0;
+                                    end
+                                end
                     default:    begin
                                     counter <= counter;
                                 end
@@ -163,8 +212,11 @@ module accelerator(
             weight_addr <= 7'b0;
         end
         else begin
-            if(state==4'b0001 | state == 4'b0010 | state==4'b0100) begin
+            if(state==4'b0001 | state == 4'b0011 | state == 4'b0100 | state == 4'b1000 | state == 4'b1001) begin
                 weight_addr <= weight_addr + 1;
+            end
+            else if(state == 4'b0111) begin
+                weight_addr <= 7'b1100100;
             end
             else begin
                 weight_addr <= weight_addr;
@@ -200,11 +252,12 @@ module accelerator(
         end
     end
 
-    wire [15:0] in_x;
+    wire [7:0] in_x;
     wire [79:0] in_w;
-    assign in_x = (state == 4'b0001) ? input_data : ((state == 4'b0100) ? {8'b0, mid_result[counter]} : {16'b0});
-    assign in_w = (state == 4'b0001 | state == 4'b0100) ? weight_data : 80'b0;
-    assign flush = (state == 4'b0010);
+    assign in_x = (state == 4'b0001) ? {(parallel == 1'b1) ? {input_data[11:8], input_data[3:0]} : {input_data[7:0]}} : {((state == 4'b0100 | state == 4'b1001) ? {mid_result[counter]} : {8'b0})};
+    assign in_w = (state == 4'b0001 | state == 4'b0100 | state == 4'b1001) ? weight_data : 80'b0;
+    assign flush = (state == 4'b0001 & counter == 7'b1100011);
+    assign parallel_en = parallel & (state[3:1] == 3'b000);
 
     pe_line_parallel plp (
         .clk(clk), 
@@ -212,9 +265,9 @@ module accelerator(
         .partial_result(partial_result), 
         .working(working),
         .flush(flush),
-        .in_x(in_x[7:0]), 
+        .in_x(in_x), 
         .in_w(in_w), 
-        .split(parallel), 
+        .split(parallel_en), 
         .out(pe_line_out)
     );
 
@@ -240,6 +293,9 @@ module accelerator(
                 else if(state == 4'b0101) begin
                     partial_result <= pe_line_out;
                 end
+                else if(state == 4'b1001) begin
+                    partial_result <= pe_line_out;
+                end
                 else begin
                     partial_result <= 480'b0;
                 end
@@ -256,25 +312,65 @@ module accelerator(
                     mid_result[i_mid] <= 8'b0;
                 end
                 else begin
+                    case(state)
+                    4'b0010:    begin
+                                    // scale 
+                                    mid_result[i_mid] <= pe_line_out[i_mid*48+9:i_mid*48+2];
+                                end
+                    4'b0011:    begin
+                                    // relu
+                                    if (mid_result[i_mid][7] == 1) begin
+                                        mid_result[i_mid] <= 8'b0;
+                                    end
+                                    else begin
+                                        mid_result[i_mid] <= mid_result[i_mid];
+                                    end
+                                end
+                    4'b0101:    begin
+                                    // scale
+                                    mid_result[i_mid] <= pe_line_out[i_mid*48+11:i_mid*48+4];
+                                end
+                    4'b0111:    begin
+                                    // buffer
+                                    mid_result[i_mid] <= mid_result_buffer[i_mid];
+                                end
+                    4'b1000:    begin
+                                    // relu
+                                    if (mid_result[i_mid][7] == 1) begin
+                                        mid_result[i_mid] <= 8'b0;
+                                    end
+                                    else begin
+                                        mid_result[i_mid] <= mid_result[i_mid];
+                                    end
+                                end
+                    4'b1010:    begin
+                                    // scale
+                                    mid_result[i_mid] <= pe_line_out[i_mid*48+11:i_mid*48+4];
+                                end
+                    default:    begin
+                                    mid_result[i_mid] <= mid_result[i_mid];
+                                end
+                    endcase
+                end
+            end
+        end
+    endgenerate
+
+    // mid_result_buffer
+    generate 
+        genvar i_2mid;
+        for(i_2mid=0;i_2mid<10;i_2mid=i_2mid+1) begin: mid_result_buffer_gen
+            always@(posedge clk or negedge rst_n) begin
+                if(!rst_n) begin
+                    mid_result_buffer[i_2mid] <= 8'b0;
+                end
+                else begin
                     if(state==4'b0010) begin
                         // scale 
-                        mid_result[i_mid] <= pe_line_out[i_mid*48+9:i_mid*48+2];
-                    end
-                    else if(state==4'b0011) begin
-                        //relu
-                        if (mid_result[i_mid][7] == 1) begin
-                            mid_result[i_mid] <= 8'b0;
-                        end
-                        else begin
-                            mid_result[i_mid] <= mid_result[i_mid];
-                        end
-                    end
-                    else if(state==4'b0101) begin
-                        // scale
-                        mid_result[i_mid] <= pe_line_out[i_mid*48+11:i_mid*48+4];
+                        mid_result_buffer[i_2mid] <= pe_line_out[i_2mid*48+33:i_2mid*48+26];
                     end
                     else begin
-                        mid_result[i_mid] <= mid_result[i_mid];
+                        mid_result_buffer[i_2mid] <= mid_result_buffer[i_2mid];
                     end
                 end
             end
@@ -319,7 +415,7 @@ module accelerator(
                 inference_result <= 4'b0;
             end
             else begin
-                if(state==4'b0110) begin
+                if(state == 4'b0110 | state == 4'b1011) begin
                     inference_result <= max_index;
                 end
                 else begin
@@ -327,6 +423,27 @@ module accelerator(
                 end
             end
         end
+    end
+
+    // valid
+    always@(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin
+            valid <= 1'b0;
+        end
+        else begin
+            if(start) begin
+                valid <= 1'b0;
+            end
+            else if(valid == 1'b1) begin
+                valid <= 1'b0;
+            end
+            else if(state == 4'b0110 | state == 4'b1011) begin
+                valid <= 1'b1;
+            end
+            else begin
+                valid <= valid;
+            end
+        end        
     end
 
 endmodule
