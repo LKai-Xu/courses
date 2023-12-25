@@ -1,4 +1,4 @@
-set top "cordic"
+set top "accelerator"
 
 set search_path 	"../lib"
 set target_library	"saed32rvt_ss0p95v125c.db sram_8kx32_ss_0p99v_0p99v_125c.db"
@@ -7,10 +7,10 @@ set link_library    "* $target_library"
 set_svf -off
 
 analyze -format sverilog -vcs [glob -nocomplain -directory ../rtl/ *.v]
-set rtl_dir "../rtl"
-analyze -format verilog $rtl_dir/subckt.v
-analyze -format verilog $rtl_dir/mac.v
-analyze -format verilog $rtl_dir/cordic.v
+# set rtl_dir "../rtl"
+# analyze -format verilog $rtl_dir/subckt.v
+# analyze -format verilog $rtl_dir/mac.v
+# analyze -format verilog $rtl_dir/cordic.v
 elaborate $top
 current_design $top
 check_design

@@ -1,0 +1,99 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : accelerator
+Version: O-2018.06-SP1
+Date   : Mon Dec 25 19:18:50 2023
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: state_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: mid_result_buffer_reg[5][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  accelerator        35000                 saed32rvt_ss0p95v125c
+  pe_line_parallel   16000                 saed32rvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  state_reg[2]/CLK (DFFARX1_RVT)                          0.00       0.00 r
+  state_reg[2]/QN (DFFARX1_RVT)                           0.16       0.16 r
+  U1438/Y (AND3X1_RVT)                                    0.08       0.25 r
+  U1439/Y (AND2X1_RVT)                                    0.09       0.34 r
+  plp/split (pe_line_parallel)                            0.00       0.34 r
+  plp/U604/Y (INVX0_RVT)                                  0.04       0.38 f
+  plp/U44/Y (INVX2_RVT)                                   0.08       0.45 r
+  plp/U38/Y (INVX4_RVT)                                   0.07       0.53 f
+  plp/U11/Y (INVX0_RVT)                                   0.12       0.65 r
+  plp/U596/Y (NAND3X0_RVT)                                0.07       0.72 f
+  plp/U615/Y (OAI221X1_RVT)                               0.13       0.85 r
+  plp/U616/Y (NAND3X0_RVT)                                0.06       0.91 f
+  plp/U2407/Y (OA221X1_RVT)                               0.10       1.01 f
+  plp/U2428/S (FADDX1_RVT)                                0.16       1.18 r
+  plp/U2411/SO (HADDX1_RVT)                               0.11       1.29 f
+  plp/U2412/SO (HADDX1_RVT)                               0.09       1.38 f
+  plp/U2419/Y (NAND2X0_RVT)                               0.06       1.44 r
+  plp/intadd_52/U5/S (FADDX1_RVT)                         0.16       1.60 f
+  plp/intadd_53/U4/S (FADDX1_RVT)                         0.15       1.75 r
+  plp/intadd_4/U8/S (FADDX1_RVT)                          0.16       1.91 f
+  plp/intadd_74/U2/S (FADDX1_RVT)                         0.17       2.08 r
+  plp/U2445/Y (AO222X1_RVT)                               0.16       2.24 r
+  plp/U2462/Y (AO222X1_RVT)                               0.16       2.39 r
+  plp/U2472/Y (AO222X1_RVT)                               0.15       2.54 r
+  plp/U2491/Y (AO222X1_RVT)                               0.15       2.69 r
+  plp/U2501/Y (AO222X1_RVT)                               0.15       2.84 r
+  plp/U2510/Y (AO222X1_RVT)                               0.15       2.99 r
+  plp/U2519/Y (AO222X1_RVT)                               0.15       3.14 r
+  plp/U2526/Y (AO222X1_RVT)                               0.15       3.29 r
+  plp/U2527/Y (OR2X1_RVT)                                 0.06       3.35 r
+  plp/U2539/Y (AO21X1_RVT)                                0.08       3.43 r
+  plp/U2548/Y (AO21X1_RVT)                                0.08       3.51 r
+  plp/U2552/Y (AO21X1_RVT)                                0.08       3.59 r
+  plp/U2566/Y (AO21X1_RVT)                                0.08       3.67 r
+  plp/U2570/Y (AO21X1_RVT)                                0.08       3.75 r
+  plp/U2585/Y (AO21X1_RVT)                                0.08       3.83 r
+  plp/U2592/Y (AO21X1_RVT)                                0.08       3.91 r
+  plp/U2599/Y (AO21X1_RVT)                                0.08       3.99 r
+  plp/U2604/Y (AO21X1_RVT)                                0.08       4.07 r
+  plp/U2609/Y (AO21X1_RVT)                                0.08       4.15 r
+  plp/U2616/Y (AO21X1_RVT)                                0.08       4.23 r
+  plp/U2623/Y (AO21X1_RVT)                                0.08       4.31 r
+  plp/U2630/Y (AO21X1_RVT)                                0.08       4.39 r
+  plp/U2637/Y (AO21X1_RVT)                                0.08       4.47 r
+  plp/U2643/Y (NAND2X0_RVT)                               0.04       4.52 f
+  plp/U2644/Y (NAND2X0_RVT)                               0.05       4.57 r
+  plp/U2645/Y (NAND2X0_RVT)                               0.05       4.62 f
+  plp/U2655/Y (OA221X1_RVT)                               0.09       4.71 f
+  plp/U2656/SO (HADDX1_RVT)                               0.11       4.81 r
+  plp/U2657/Y (AND2X1_RVT)                                0.06       4.87 r
+  plp/U2665/Y (AO21X1_RVT)                                0.05       4.92 r
+  plp/out[273] (pe_line_parallel)                         0.00       4.92 r
+  U2494/Y (AO22X1_RVT)                                    0.08       5.01 r
+  mid_result_buffer_reg[5][7]/D (DFFARX1_RVT)             0.00       5.01 r
+  data arrival time                                                  5.01
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  mid_result_buffer_reg[5][7]/CLK (DFFARX1_RVT)           0.00      10.00 r
+  library setup time                                     -0.06       9.94
+  data required time                                                 9.94
+  --------------------------------------------------------------------------
+  data required time                                                 9.94
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.93
+
+
+1
