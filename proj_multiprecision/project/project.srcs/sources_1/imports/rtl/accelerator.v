@@ -70,13 +70,13 @@ module accelerator(
 
     // state
     // 4'b0000, idle
-    // 4'b0001, FC LAYER 1
+    // 4'b0001, FC layer 1
     // 4'b0010, scale
     // 4'b0011, relu
-    // 4'b0100, FC LAYER 2
+    // 4'b0100, FC layer 2
     // 4'b0101, scale
     // 4'b0110, argmax
-    // if split
+    // if split, then working for image 2
     // 4'b0111, buffer
     // 4'b1000, relu for image 2
     // 4'b1001, FC LAYER 2 for image 2
