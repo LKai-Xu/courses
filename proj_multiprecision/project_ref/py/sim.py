@@ -2,15 +2,15 @@
 Author: LKai-Xu
 Date: 2023-12-19 09:20:47
 LastEditors: LKai-Xu
-LastEditTime: 2023-12-23 11:38:45
-FilePath: \courses\proj\project_ref\py\sim.py
+LastEditTime: 2023-12-25 14:55:47
+FilePath: \proj_multiprecision\project_ref\py\sim.py
 Description: 
 '''
 from weights import w1, w2
 from images import im1, im4, im6, im7, im9
 
 # you can change the image and predict the corresponding number
-im = im6
+im = im7
 
 # layer 1
 x1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

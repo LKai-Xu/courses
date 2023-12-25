@@ -42,6 +42,23 @@ module basic_unit_ha_and(
 endmodule
 
 
+module basic_unit_ha_nand(
+    input in_x,
+    input in_a,
+    input in_b,
+    output s,
+    output cout
+);
+
+    wire in_y;
+    assign in_y = ~(in_a & in_b);
+
+    assign s = in_x ^ in_y;
+    assign cout = in_x & in_y;
+
+endmodule
+
+
 module basic_unit_fa_and(
     input in_x,
     input in_a,
@@ -59,123 +76,159 @@ module basic_unit_fa_and(
 
 endmodule
 
-module adder_16bit(
-    input   [15:0] a,
-    input   [15:0] b,
-    output  [15:0] out
+
+module basic_unit_fa_nand(
+    input in_x,
+    input in_a,
+    input in_b,
+    input cin,
+    output s,
+    output cout
 );
 
-    wire [15:0] s;
-    wire [15:0] cout;
+    wire in_y;
+    assign in_y = ~(in_a & in_b);
 
-    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    assign s = in_x ^ in_y ^ cin;
+    assign cout = (in_x & in_y) ^ (cin & (in_x ^ in_y));
+
+endmodule
+
+
+
+module basic_unit_first_line(
+    input [7:0] in_x,
+    input [7:0] in_a,
+    input in_b,
+    output [7:0] s,
+    output [7:0] cout
+);
+
+    basic_unit_ha_and i_buha_0 (.in_x(in_x[0]), .in_a(in_a[0]), .in_b(in_b), .s(s[0]), .cout(cout[0]));
+    basic_unit_ha_and i_buha_1 (.in_x(in_x[1]), .in_a(in_a[1]), .in_b(in_b), .s(s[1]), .cout(cout[1]));
+    basic_unit_ha_and i_buha_2 (.in_x(in_x[2]), .in_a(in_a[2]), .in_b(in_b), .s(s[2]), .cout(cout[2]));
+    basic_unit_ha_and i_buha_3 (.in_x(in_x[3]), .in_a(in_a[3]), .in_b(in_b), .s(s[3]), .cout(cout[3]));
+    basic_unit_ha_and i_buha_4 (.in_x(in_x[4]), .in_a(in_a[4]), .in_b(in_b), .s(s[4]), .cout(cout[4]));
+    basic_unit_ha_and i_buha_5 (.in_x(in_x[5]), .in_a(in_a[5]), .in_b(in_b), .s(s[5]), .cout(cout[5]));
+    basic_unit_ha_and i_buha_6 (.in_x(in_x[6]), .in_a(in_a[6]), .in_b(in_b), .s(s[6]), .cout(cout[6]));
+    basic_unit_ha_nand i_buhna_7 (.in_x(in_x[7]), .in_a(in_a[7]), .in_b(in_b), .s(s[7]), .cout(cout[7]));
+
+
+endmodule
+
+
+
+
+module basic_unit_line(
+    input [7:0] in_x,
+    input [7:0] in_a,
+    input in_b,
+    input [7:0] cin,
+    output [7:0] s,
+    output [7:0] cout
+);
+
+    basic_unit_fa_and i_bufa_0 (.in_x(in_x[0]), .in_a(in_a[0]), .in_b(in_b), .cin(cin[0]), .s(s[0]), .cout(cout[0]));
+    basic_unit_fa_and i_bufa_1 (.in_x(in_x[1]), .in_a(in_a[1]), .in_b(in_b), .cin(cin[1]), .s(s[1]), .cout(cout[1]));
+    basic_unit_fa_and i_bufa_2 (.in_x(in_x[2]), .in_a(in_a[2]), .in_b(in_b), .cin(cin[2]), .s(s[2]), .cout(cout[2]));
+    basic_unit_fa_and i_bufa_3 (.in_x(in_x[3]), .in_a(in_a[3]), .in_b(in_b), .cin(cin[3]), .s(s[3]), .cout(cout[3]));
+    basic_unit_fa_and i_bufa_4 (.in_x(in_x[4]), .in_a(in_a[4]), .in_b(in_b), .cin(cin[4]), .s(s[4]), .cout(cout[4]));
+    basic_unit_fa_and i_bufa_5 (.in_x(in_x[5]), .in_a(in_a[5]), .in_b(in_b), .cin(cin[5]), .s(s[5]), .cout(cout[5]));
+    basic_unit_fa_and i_bufa_6 (.in_x(in_x[6]), .in_a(in_a[6]), .in_b(in_b), .cin(cin[6]), .s(s[6]), .cout(cout[6]));
+    basic_unit_fa_nand i_bufna_7 (.in_x(in_x[7]), .in_a(in_a[7]), .in_b(in_b), .cin(cin[7]), .s(s[7]), .cout(cout[7]));
+
+
+endmodule
+
+
+
+
+module basic_unit_last_line(
+    input [7:0] in_x,
+    input [7:0] in_a,
+    input in_b,
+    input [7:0] cin,
+    output [7:0] s,
+    output [7:0] cout
+);
+
+    basic_unit_fa_nand i_bufna_0 (.in_x(in_x[0]), .in_a(in_a[0]), .in_b(in_b), .cin(cin[0]), .s(s[0]), .cout(cout[0]));
+    basic_unit_fa_nand i_bufna_1 (.in_x(in_x[1]), .in_a(in_a[1]), .in_b(in_b), .cin(cin[1]), .s(s[1]), .cout(cout[1]));
+    basic_unit_fa_nand i_bufna_2 (.in_x(in_x[2]), .in_a(in_a[2]), .in_b(in_b), .cin(cin[2]), .s(s[2]), .cout(cout[2]));
+    basic_unit_fa_nand i_bufna_3 (.in_x(in_x[3]), .in_a(in_a[3]), .in_b(in_b), .cin(cin[3]), .s(s[3]), .cout(cout[3]));
+    basic_unit_fa_nand i_bufna_4 (.in_x(in_x[4]), .in_a(in_a[4]), .in_b(in_b), .cin(cin[4]), .s(s[4]), .cout(cout[4]));
+    basic_unit_fa_nand i_bufna_5 (.in_x(in_x[5]), .in_a(in_a[5]), .in_b(in_b), .cin(cin[5]), .s(s[5]), .cout(cout[5]));
+    basic_unit_fa_nand i_bufna_6 (.in_x(in_x[6]), .in_a(in_a[6]), .in_b(in_b), .cin(cin[6]), .s(s[6]), .cout(cout[6]));
+    basic_unit_fa_and i_bufa_7 (.in_x(in_x[7]), .in_a(in_a[7]), .in_b(in_b), .cin(cin[7]), .s(s[7]), .cout(cout[7]));
+
+
+endmodule
+
+
+module adder_9bit_unit(
+    input   [8:0] a,
+    input   [8:1] b,
+    output  [8:0] out
+);
+
+    wire [8:0] s;
+    wire [8:0] cout;
+
+    ha i_ha_0 (.a(a[0]), .b(1'b0), .s(s[0]), .cout(cout[0]));
     generate 
         genvar i_adder;
-        for(i_adder=1; i_adder<16; i_adder=i_adder+1) begin: adder_for_bits
+        for(i_adder=1; i_adder<9; i_adder=i_adder+1) begin: adder_for_bits
             fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
         end
     endgenerate
 
-    assign out[15:0] = s[15:0];
+    assign out[8:0] = s[8:0];
 
 
 endmodule
 
 
-module lut(
-    input [3:0] index,
-    output reg [15:0] ei_radian,
-    output reg [15:0] tanei
+module adder_24bit(
+    input   [23:0] a,
+    input   [23:0] b,
+    output  [23:0] out
 );
 
-    always@(*)
-    begin
-        case(index)
-        4'b0000: begin
-            ei_radian = 16'b0000000000000000;
-            tanei = 16'h0000;
+    wire [23:0] s;
+    wire [23:0] cout;
+
+    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    generate 
+        genvar i_adder;
+        for(i_adder=1; i_adder<24; i_adder=i_adder+1) begin: adder_for_bits
+            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
         end
-        4'b0001: begin
-            ei_radian = 16'b0110010010000111;
-            tanei = 16'h8000;
-        end
-        4'b0010: begin
-            ei_radian = 16'b0011101101011000;
-            tanei = 16'h4000;
-        end
-        4'b0011: begin
-            ei_radian = 16'b0001111101011011;
-            tanei = 16'h2000;
-        end
-        4'b0100: begin
-            ei_radian = 16'b0000111111101010;
-            tanei = 16'h1000;
-        end
-        4'b0101: begin
-            ei_radian = 16'b0000011111111101;
-            tanei = 16'h0800;
-        end
-        4'b0110: begin
-            ei_radian = 16'b0000001111111111;
-            tanei = 16'h0400;
-        end
-        4'b0111: begin
-            ei_radian = 16'b0000000111111111;
-            tanei = 16'h0200;
-        end
-        4'b1000: begin
-            ei_radian = 16'b0000000011111111;
-            tanei = 16'h0100;
-        end
-        4'b1001: begin
-            ei_radian = 16'b0000000001111111;
-            tanei = 16'h0080;
-        end
-        4'b1010: begin
-            ei_radian = 16'b0000000000111111;
-            tanei = 16'h0040;
-        end
-        4'b1011: begin
-            ei_radian = 16'b0000000000011111;
-            tanei = 16'h0020;
-        end
-        4'b1100: begin
-            ei_radian = 16'b0000000000001111;
-            tanei = 16'h0010;
-        end
-        4'b1101: begin
-            ei_radian = 16'b0000000000000111;
-            tanei = 16'h0008;
-        end
-        4'b1110: begin
-            ei_radian = 16'b0000000000000011;
-            tanei = 16'h0004;
-        end
-        4'b1110: begin
-            ei_radian = 16'b0000000000000001;
-            tanei = 16'h0002;
-        end
-        default: begin
-            ei_radian = 16'b0000000000000000;
-            tanei = 16'h0000;
-        end
-        endcase
-    end
+    endgenerate
+
+    assign out[23:0] = s[23:0];
+
 
 endmodule
 
 
-
-module add_or_sub_unit(
-    input neg,
-    input [15:0] ei_radian,
-    input [15:0] inner_angle,
-    output [15:0] new_inner_angle
+module adder_32bit(
+    input   [31:0] a,
+    input   [31:0] b,
+    output  [31:0] out
 );
 
-    wire [15:0] signed_ei_radian;
-    assign signed_ei_radian = neg ? {{~{ei_radian}+1}} : ei_radian;
+    wire [31:0] s;
+    wire [31:0] cout;
 
-    adder_16bit i_adder_16b_0 (.a(signed_ei_radian), .b(inner_angle), .out(new_inner_angle));
+    ha i_ha_0 (.a(a[0]), .b(b[0]), .s(s[0]), .cout(cout[0]));
+    generate 
+        genvar i_adder;
+        for(i_adder=1; i_adder<32; i_adder=i_adder+1) begin: adder_for_bits
+            fa i_fa (.a(a[i_adder]), .b(b[i_adder]), .cin(cout[i_adder-1]), .s(s[i_adder]), .cout(cout[i_adder]));
+        end
+    endgenerate
+
+    assign out[31:0] = s[31:0];
+
 
 endmodule

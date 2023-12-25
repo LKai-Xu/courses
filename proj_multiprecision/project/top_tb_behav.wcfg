@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="864114952fs"></ZoomStartTime>
-      <ZoomEndTime time="1027177010fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1500000001fs"></ZoomEndTime>
+      <Cursor1Time time="1500000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="162"></NameColumnWidth>
-      <ValueColumnWidth column_width="60"></ValueColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="25" />
    <wvobject fp_name="/top_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -44,9 +44,17 @@
       <obj_property name="ElementShortName">state[3:0]</obj_property>
       <obj_property name="ObjectShortName">state[3:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_tb/i_acc/parallel_en" type="logic">
+      <obj_property name="ElementShortName">parallel_en</obj_property>
+      <obj_property name="ObjectShortName">parallel_en</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_tb/i_acc/counter" type="array">
       <obj_property name="ElementShortName">counter[6:0]</obj_property>
       <obj_property name="ObjectShortName">counter[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/valid" type="logic">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/inference_result" type="array">
       <obj_property name="ElementShortName">inference_result[3:0]</obj_property>
@@ -115,89 +123,63 @@
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/top_tb/weight_we" type="logic">
-      <obj_property name="ElementShortName">weight_we</obj_property>
-      <obj_property name="ObjectShortName">weight_we</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_index" type="array">
-      <obj_property name="ElementShortName">mid_index[4:0][3:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_index[4:0][3:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_max_value" type="array">
-      <obj_property name="ElementShortName">mid_max_value[4:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_max_value[4:0][7:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value[4]" type="array">
+   <wvobject fp_name="/top_tb/i_acc/mid_result_buffer" type="array">
+      <obj_property name="ElementShortName">mid_result_buffer[9:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">mid_result_buffer[9:0][7:0]</obj_property>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[9]" type="array">
+         <obj_property name="ElementShortName">[9][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[8]" type="array">
+         <obj_property name="ElementShortName">[8][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[7]" type="array">
+         <obj_property name="ElementShortName">[7][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[6]" type="array">
+         <obj_property name="ElementShortName">[6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[5]" type="array">
+         <obj_property name="ElementShortName">[5][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[4]" type="array">
          <obj_property name="ElementShortName">[4][7:0]</obj_property>
          <obj_property name="ObjectShortName">[4][7:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value[3]" type="array">
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[3]" type="array">
          <obj_property name="ElementShortName">[3][7:0]</obj_property>
          <obj_property name="ObjectShortName">[3][7:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value[2]" type="array">
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[2]" type="array">
          <obj_property name="ElementShortName">[2][7:0]</obj_property>
          <obj_property name="ObjectShortName">[2][7:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value[1]" type="array">
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[1]" type="array">
          <obj_property name="ElementShortName">[1][7:0]</obj_property>
          <obj_property name="ObjectShortName">[1][7:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value[0]" type="array">
+      <wvobject fp_name="/top_tb/i_acc/mid_result_buffer[0]" type="array">
          <obj_property name="ElementShortName">[0][7:0]</obj_property>
          <obj_property name="ObjectShortName">[0][7:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_index_2" type="array">
-      <obj_property name="ElementShortName">mid_index_2[1:0][3:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_index_2[1:0][3:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/i_acc/mid_index_2[1]" type="array">
-         <obj_property name="ElementShortName">[1][3:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][3:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_index_2[0]" type="array">
-         <obj_property name="ElementShortName">[0][3:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][3:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_max_value_2" type="array">
-      <obj_property name="ElementShortName">mid_max_value_2[1:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_max_value_2[1:0][7:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value_2[1]" type="array">
-         <obj_property name="ElementShortName">[1][7:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][7:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/i_acc/mid_max_value_2[0]" type="array">
-         <obj_property name="ElementShortName">[0][7:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][7:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_index_3" type="array">
-      <obj_property name="ElementShortName">mid_index_3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_index_3[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/mid_max_value_3" type="array">
-      <obj_property name="ElementShortName">mid_max_value_3[7:0]</obj_property>
-      <obj_property name="ObjectShortName">mid_max_value_3[7:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/i_acc/max_index" type="array">
-      <obj_property name="ElementShortName">max_index[3:0]</obj_property>
-      <obj_property name="ObjectShortName">max_index[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="/top_tb/weight_we" type="logic">
+      <obj_property name="ElementShortName">weight_we</obj_property>
+      <obj_property name="ObjectShortName">weight_we</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/weight_addr" type="array">
       <obj_property name="ElementShortName">weight_addr[6:0]</obj_property>
@@ -210,6 +192,10 @@
    <wvobject fp_name="/top_tb/input_we" type="logic">
       <obj_property name="ElementShortName">input_we</obj_property>
       <obj_property name="ObjectShortName">input_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/input_data" type="array">
+      <obj_property name="ElementShortName">input_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">input_data[15:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/input_addr" type="array">
       <obj_property name="ElementShortName">input_addr[6:0]</obj_property>
@@ -231,6 +217,10 @@
          <obj_property name="ElementShortName">partial_result[47:0]</obj_property>
          <obj_property name="ObjectShortName">partial_result[47:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/i_acc/plp/i_pe_unit_0/split" type="logic">
+         <obj_property name="ElementShortName">split</obj_property>
+         <obj_property name="ObjectShortName">split</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/i_acc/plp/i_pe_unit_0/a" type="array">
          <obj_property name="ElementShortName">a[7:0]</obj_property>

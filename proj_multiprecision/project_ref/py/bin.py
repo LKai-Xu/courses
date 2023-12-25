@@ -2,8 +2,8 @@
 Author: LKai-Xu
 Date: 2023-12-19 09:20:47
 LastEditors: LKai-Xu
-LastEditTime: 2023-12-22 22:34:19
-FilePath: \courses\proj\project_ref\py\bin.py
+LastEditTime: 2023-12-25 14:48:48
+FilePath: \proj_multiprecision\project_ref\py\bin.py
 Description: 
 '''
 from weights import w1, w2
@@ -44,6 +44,12 @@ def image_to_bin(im):
     return binfile
 
 
+def two_image_to_bin(im1,im2):
+    binfile = ''
+    for i in range(100):
+        binfile += (int_to_bin(im1[i], 8) + '_' + int_to_bin(im2[i], 8)) + '\n'
+    return binfile
+
 if __name__ == '__main__':
     with open('im.bin', 'w') as f:
         # generate binfile for im6
@@ -55,17 +61,17 @@ if __name__ == '__main__':
     with open('w2.bin', 'w') as f:
         f.write(weight_to_bin(w2))
 
+    with open('twoim.bin', 'w') as f:
+        f.write(two_image_to_bin(im6,im7))
+
     with open('im_test.bin','w') as f:
+        # generate binfile for im_test
         f.write(image_to_bin(im_test))
 
     w1_test = [[1 for _ in range(len(row))] for row in w1]
-    # print(type(w1_test))
-    # print(w1_test)
     with open('w1_test.bin','w') as f:
         f.write(weight_to_bin(w1_test))
 
     w2_test = [[1 for _ in range(len(row))] for row in w2]
-    # print(type(w2_test))
-    # print(w2_test)
     with open('w2_test.bin','w') as f:
         f.write(weight_to_bin(w2_test))

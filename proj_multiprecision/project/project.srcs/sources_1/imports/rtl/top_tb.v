@@ -13,8 +13,8 @@ module top_tb();
 
     wire input_we;
     wire [6:0] input_addr;
-    wire [15:0] input_w_data;
     wire [15:0] input_data;
+    wire valid;
 
     // clk
     initial begin
@@ -39,7 +39,7 @@ module top_tb();
 
     // split
     initial begin
-        split = 1'b0;
+        split = 1'b1;
     end
 
     accelerator i_acc (
@@ -58,6 +58,7 @@ module top_tb();
         .input_addr(input_addr),
         .input_data(input_data),
 
+        .valid(valid),
         .inference_result(inference_result)
     );
 
@@ -85,13 +86,14 @@ module top_tb();
 
     // weight loading initially
     initial begin
-        $readmemb("D:\\code\\courses\\proj\\project_ref\\w1.bin", sram_weight.mem_r, 0,99);
-        $readmemb("D:\\code\\courses\\proj\\project_ref\\w2.bin", sram_weight.mem_r, 100);
+        $readmemb("D:\\code\\courses\\proj_multiprecision\\project_ref\\w1.bin", sram_weight.mem_r, 0,99);
+        $readmemb("D:\\code\\courses\\proj_multiprecision\\project_ref\\w2.bin", sram_weight.mem_r, 100,109);
+        $readmemb("D:\\code\\courses\\proj_multiprecision\\project_ref\\w2.bin", sram_weight.mem_r, 110,119);
     end
 
     // input loading initially
     initial begin
-        $readmemb("D:\\code\\courses\\proj\\project_ref\\im.bin", sram_input.mem_r);
+        $readmemb("D:\\code\\courses\\proj_multiprecision\\project_ref\\twoim.bin", sram_input.mem_r);
     end
 
 endmodule
