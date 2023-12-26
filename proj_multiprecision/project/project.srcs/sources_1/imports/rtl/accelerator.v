@@ -14,6 +14,7 @@ module accelerator(
     output  reg [6:0]   input_addr,
     input   [15:0]  input_data,
 
+    // output
     output  reg valid,
     output  reg [3:0]   inference_result
 );
@@ -208,7 +209,7 @@ module accelerator(
 
     // weight_addr
     always@(posedge clk or negedge rst_n) begin
-        if(!rst_n) begin
+        if(!rst_n | start) begin
             weight_addr <= 7'b0;
         end
         else begin
@@ -236,7 +237,7 @@ module accelerator(
 
     // input_addr
     always@(posedge clk or negedge rst_n) begin
-        if(!rst_n) begin
+        if(!rst_n | start) begin
             input_addr <= 7'b0;
         end
         else begin
