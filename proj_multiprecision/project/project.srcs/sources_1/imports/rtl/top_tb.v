@@ -39,7 +39,7 @@ module top_tb();
 
     // split
     initial begin
-        split = 1'b0;
+        split = 1'b1;
     end
 
     accelerator i_acc (

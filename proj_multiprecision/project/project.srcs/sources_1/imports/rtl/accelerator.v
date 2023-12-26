@@ -209,11 +209,14 @@ module accelerator(
 
     // weight_addr
     always@(posedge clk or negedge rst_n) begin
-        if(!rst_n | start) begin
+        if(!rst_n) begin
             weight_addr <= 7'b0;
         end
         else begin
-            if(state==4'b0001 | state == 4'b0011 | state == 4'b0100 | state == 4'b1000 | state == 4'b1001) begin
+            if(start) begin
+                weight_addr <= 7'b0;
+            end
+            else if(state==4'b0001 | state == 4'b0011 | state == 4'b0100 | state == 4'b1000 | state == 4'b1001) begin
                 weight_addr <= weight_addr + 1;
             end
             else if(state == 4'b0111) begin
@@ -237,11 +240,14 @@ module accelerator(
 
     // input_addr
     always@(posedge clk or negedge rst_n) begin
-        if(!rst_n | start) begin
+        if(!rst_n) begin
             input_addr <= 7'b0;
         end
         else begin
-            if(state==4'b0001) begin
+            if(start) begin
+                input_addr <= 7'b0;
+            end
+            else if(state==4'b0001) begin
                 input_addr <= input_addr + 1;
             end
             else if(state==4'b0100) begin
